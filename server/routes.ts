@@ -1,8 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import passport from "passport";
-import Razorpay from "razorpay";
-import crypto from "crypto";
 import { storage } from "./storage";
 import { addToCartSchema, orderInfoSchema, uploadProductSchema } from "@shared/schema";
 import { z } from "zod";
