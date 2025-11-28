@@ -228,9 +228,14 @@ export async function registerRoutes(
   // Google OAuth callback
   app.get(
     "/auth/google/callback",
-    passport.authenticate("google", { failureRedirect: "/login?error=auth_failed" }),
+    passport.authenticate("google", { 
+      failureRedirect: "/login?error=auth_failed",
+      failureMessage: true 
+    }),
     (req, res) => {
-      res.redirect("/profile");
+      // Redirect to profile after successful authentication
+      const origin = req.get("origin") || `${req.protocol}://${req.get("host")}`;
+      res.redirect(`${origin}/profile`);
     }
   );
 

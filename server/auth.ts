@@ -4,22 +4,12 @@ import type { User } from "@shared/schema";
 
 const users = new Map<string, User>();
 
-// Dynamically build callback URL
-const getCallbackURL = () => {
-  if (process.env.NODE_ENV === "production") {
-    // In production, use environment variable or construct from HOST
-    return process.env.GOOGLE_OAUTH_CALLBACK_URL || "https://your-domain.com/auth/google/callback";
-  }
-  // In development, use localhost
-  return "http://localhost:5000/auth/google/callback";
-};
-
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_OAUTH_CLIENT_ID || "",
       clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET || "",
-      callbackURL: getCallbackURL(),
+      callbackURL: "/auth/google/callback",
       passReqToCallback: false,
     },
     (_accessToken, _refreshToken, profile, done) => {
