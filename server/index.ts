@@ -9,6 +9,9 @@ import "./auth";
 const app = express();
 const httpServer = createServer(app);
 
+// Trust proxy headers for Replit (HTTPS behind proxy)
+app.set('trust proxy', 1);
+
 declare module "http" {
   interface IncomingMessage {
     rawBody: unknown;
@@ -45,8 +48,9 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === "production" || process.env.REPLIT_DEPLOYMENT === "true",
       httpOnly: true,
+      sameSite: "lax",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
   })
