@@ -249,6 +249,41 @@ export async function registerRoutes(
     }
   });
 
+  // Bulk create products (admin)
+  app.post("/api/admin/products/bulk", async (req, res) => {
+    try {
+      const { products } = req.body;
+      if (!Array.isArray(products)) {
+        return res.status(400).json({ error: "Products must be an array" });
+      }
+
+      let successCount = 0;
+      let failureCount = 0;
+
+      for (const productData of products) {
+        try {
+          const result = uploadProductSchema.safeParse({
+            ...productData,
+            id: productData.id || `product-${Date.now()}-${Math.random()}`,
+          });
+
+          if (result.success) {
+            await storage.createProduct(result.data);
+            successCount++;
+          } else {
+            failureCount++;
+          }
+        } catch (error) {
+          failureCount++;
+        }
+      }
+
+      res.json({ successCount, failureCount, total: products.length });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to process bulk upload" });
+    }
+  });
+
   // ============== AUTH ROUTES ==============
 
   // Google OAuth login
