@@ -15,6 +15,14 @@ import Checkout from "@/pages/Checkout";
 import Admin from "@/pages/Admin";
 import Login from "@/pages/Login";
 import Profile from "@/pages/Profile";
+import AboutUs from "@/pages/AboutUs";
+import Careers from "@/pages/Careers";
+import Returns from "@/pages/Returns";
+import SizeGuide from "@/pages/SizeGuide";
+import ContactUs from "@/pages/ContactUs";
+import ShippingInfo from "@/pages/ShippingInfo";
+import FAQ from "@/pages/FAQ";
+import MeetDeveloper from "@/pages/MeetDeveloper";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -27,6 +35,14 @@ function Router() {
       <Route path="/admin" component={Admin} />
       <Route path="/login" component={Login} />
       <Route path="/profile" component={Profile} />
+      <Route path="/about" component={AboutUs} />
+      <Route path="/careers" component={Careers} />
+      <Route path="/returns" component={Returns} />
+      <Route path="/size-guide" component={SizeGuide} />
+      <Route path="/contact" component={ContactUs} />
+      <Route path="/shipping" component={ShippingInfo} />
+      <Route path="/faq" component={FAQ} />
+      <Route path="/developer" component={MeetDeveloper} />
       <Route component={NotFound} />
     </Switch>
   );
