@@ -23,6 +23,8 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState<User | null>(null);
   const [location] = useLocation();
   const { theme, toggleTheme } = useTheme();
@@ -107,14 +109,30 @@ export function Header() {
             {/* Right Section */}
             <div className="flex items-center gap-2">
               {/* Search - Desktop */}
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hidden md:flex"
-                data-testid="button-search"
-              >
-                <Search className="h-5 w-5" />
-              </Button>
+              <div className="hidden md:flex items-center gap-2">
+                {isSearchOpen ? (
+                  <input
+                    type="text"
+                    placeholder="Search products..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    autoFocus
+                    className="w-48 px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    data-testid="input-search"
+                  />
+                ) : null}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => {
+                    setIsSearchOpen(!isSearchOpen);
+                    if (isSearchOpen) setSearchQuery("");
+                  }}
+                  data-testid="button-search"
+                >
+                  <Search className="h-5 w-5" />
+                </Button>
+              </div>
 
               {/* Auth Button */}
               {user ? (
