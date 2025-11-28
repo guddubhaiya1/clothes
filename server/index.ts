@@ -1,7 +1,10 @@
 import express, { type Request, Response, NextFunction } from "express";
+import session from "express-session";
+import passport from "passport";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import "./auth";
 
 const app = express();
 const httpServer = createServer(app);
@@ -9,6 +12,19 @@ const httpServer = createServer(app);
 declare module "http" {
   interface IncomingMessage {
     rawBody: unknown;
+  }
+}
+
+declare global {
+  namespace Express {
+    interface User {
+      id: string;
+      googleId: string;
+      email: string;
+      displayName: string;
+      avatar?: string;
+      createdAt: string;
+    }
   }
 }
 
@@ -21,6 +37,23 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false }));
+
+// Session middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "dev-secret-key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {

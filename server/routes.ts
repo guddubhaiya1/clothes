@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import passport from "passport";
 import { storage } from "./storage";
 import { addToCartSchema, orderInfoSchema, uploadProductSchema } from "@shared/schema";
 import { z } from "zod";
@@ -217,6 +218,39 @@ export async function registerRoutes(
     } catch (error) {
       res.status(500).json({ error: "Failed to create product" });
     }
+  });
+
+  // ============== AUTH ROUTES ==============
+
+  // Google OAuth login
+  app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+
+  // Google OAuth callback
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/login?error=auth_failed" }),
+    (req, res) => {
+      res.redirect("/profile");
+    }
+  );
+
+  // Get current user
+  app.get("/api/auth/user", (req, res) => {
+    if (req.isAuthenticated()) {
+      res.json(req.user);
+    } else {
+      res.json(null);
+    }
+  });
+
+  // Logout
+  app.post("/api/auth/logout", (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        return res.status(500).json({ error: "Logout failed" });
+      }
+      res.json({ success: true });
+    });
   });
 
   return httpServer;

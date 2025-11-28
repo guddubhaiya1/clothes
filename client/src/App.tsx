@@ -13,6 +13,8 @@ import Shop from "@/pages/Shop";
 import ProductDetail from "@/pages/ProductDetail";
 import Checkout from "@/pages/Checkout";
 import Admin from "@/pages/Admin";
+import Login from "@/pages/Login";
+import Profile from "@/pages/Profile";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,6 +25,8 @@ function Router() {
       <Route path="/product/:id" component={ProductDetail} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/admin" component={Admin} />
+      <Route path="/login" component={Login} />
+      <Route path="/profile" component={Profile} />
       <Route component={NotFound} />
     </Switch>
   );

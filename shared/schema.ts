@@ -128,3 +128,13 @@ export const uploadProductSchema = z.object({
 });
 
 export type UploadProductInput = z.infer<typeof uploadProductSchema>;
+
+// User interface for OAuth
+export interface User {
+  id: string;
+  googleId: string;
+  email: string;
+  displayName: string;
+  avatar?: string;
+  createdAt: string;
+}

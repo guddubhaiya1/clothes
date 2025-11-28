@@ -1,10 +1,17 @@
 import { Link, useLocation } from "wouter";
-import { ShoppingBag, Menu, X, Sun, Moon, Search } from "lucide-react";
+import { ShoppingBag, Menu, X, Sun, Moon, Search, LogIn, User as UserIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/lib/theme-provider";
 import { useCart } from "@/lib/cart-context";
+
+interface User {
+  id: string;
+  email: string;
+  displayName: string;
+  avatar?: string;
+}
 
 const navLinks = [
   { href: "/shop", label: "Shop" },
@@ -16,10 +23,24 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   const [location] = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { toggleCart, getItemCount } = useCart();
   const itemCount = getItemCount();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch("/api/auth/user");
+        const data = await response.json();
+        setUser(data);
+      } catch (error) {
+        setUser(null);
+      }
+    };
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,6 +115,44 @@ export function Header() {
               >
                 <Search className="h-5 w-5" />
               </Button>
+
+              {/* Auth Button */}
+              {user ? (
+                <Link href="/profile">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="hidden md:flex"
+                      title={user.displayName}
+                      data-testid="button-user-profile"
+                    >
+                      {user.avatar ? (
+                        <img
+                          src={user.avatar}
+                          alt={user.displayName}
+                          className="w-5 h-5 rounded-full"
+                        />
+                      ) : (
+                        <UserIcon className="h-5 w-5" />
+                      )}
+                    </Button>
+                  </motion.div>
+                </Link>
+              ) : (
+                <Link href="/login">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="hidden md:flex gap-2"
+                      data-testid="button-login"
+                    >
+                      <LogIn className="h-5 w-5" />
+                    </Button>
+                  </motion.div>
+                </Link>
+              )}
 
               {/* Theme Toggle */}
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
