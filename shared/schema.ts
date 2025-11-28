@@ -138,3 +138,11 @@ export interface User {
   avatar?: string;
   createdAt: string;
 }
+
+// User Cart Table
+export const userCartsTable = pgTable("user_carts", {
+  id: varchar("id").primaryKey(),
+  userId: varchar("user_id").notNull(),
+  items: json("items").$type<CartItem[]>().notNull().default([]),
+  updatedAt: varchar("updated_at").notNull(),
+});

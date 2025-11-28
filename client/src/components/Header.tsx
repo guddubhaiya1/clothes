@@ -40,7 +40,7 @@ export function Header() {
       }
     };
     fetchUser();
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {

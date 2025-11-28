@@ -208,6 +208,9 @@ export interface IStorage {
   removeFromCart(cartId: string, productId: string, size: string, color: string): Promise<Cart>;
   clearCart(cartId: string): Promise<Cart>;
   
+  getUserCart(userId: string): Promise<CartItem[] | undefined>;
+  saveUserCart(userId: string, items: CartItem[]): Promise<CartItem[]>;
+  
   createOrder(orderData: { items: CartItem[]; customerInfo: OrderInfo; subtotal: number; shipping: number; total: number }): Promise<Order>;
   getOrder(orderId: string): Promise<Order | undefined>;
 }
@@ -216,11 +219,13 @@ export class MemStorage implements IStorage {
   private carts: Map<string, Cart>;
   private orders: Map<string, Order>;
   private dynamicProducts: Product[];
+  private userCarts: Map<string, CartItem[]>;
 
   constructor() {
     this.carts = new Map();
     this.orders = new Map();
     this.dynamicProducts = [];
+    this.userCarts = new Map();
   }
 
   async getProducts(): Promise<Product[]> {
@@ -380,6 +385,15 @@ export class MemStorage implements IStorage {
 
   async getOrder(orderId: string): Promise<Order | undefined> {
     return this.orders.get(orderId);
+  }
+
+  async getUserCart(userId: string): Promise<CartItem[] | undefined> {
+    return this.userCarts.get(userId);
+  }
+
+  async saveUserCart(userId: string, items: CartItem[]): Promise<CartItem[]> {
+    this.userCarts.set(userId, items);
+    return items;
   }
 }
 

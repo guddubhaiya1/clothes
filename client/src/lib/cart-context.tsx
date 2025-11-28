@@ -32,10 +32,58 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return [];
   });
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<{ id: string } | null>(null);
+
+  // Fetch user and load their cart if logged in
+  useEffect(() => {
+    const fetchUserAndCart = async () => {
+      try {
+        const userRes = await fetch("/api/auth/user");
+        const userData = await userRes.json();
+        
+        if (userData?.id) {
+          setUser(userData);
+          // Load user's cart from database
+          const cartRes = await fetch(`/api/cart/user`);
+          if (cartRes.ok) {
+            const cartData = await cartRes.json();
+            if (cartData?.items) {
+              setItems(cartData.items);
+            }
+          }
+        } else {
+          setUser(null);
+          // Load cart from localStorage for guest users
+          const stored = localStorage.getItem("codedrip-cart");
+          if (stored) {
+            try {
+              setItems(JSON.parse(stored));
+            } catch {
+              setItems([]);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch user or cart:", error);
+      }
+    };
+
+    fetchUserAndCart();
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem("codedrip-cart", JSON.stringify(items));
-  }, [items]);
+    if (user?.id) {
+      // Save to database if user is logged in
+      fetch("/api/cart/user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items }),
+      }).catch(err => console.error("Failed to save cart to database:", err));
+    } else {
+      // Save to localStorage if user is not logged in
+      localStorage.setItem("codedrip-cart", JSON.stringify(items));
+    }
+  }, [items, user]);
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);

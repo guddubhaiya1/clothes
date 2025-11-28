@@ -150,6 +150,35 @@ export async function registerRoutes(
     }
   });
 
+  // Get user's cart (for logged in users)
+  app.get("/api/cart/user", async (req, res) => {
+    try {
+      if (!req.isAuthenticated() || !req.user) {
+        return res.status(401).json({ error: "Not authenticated" });
+      }
+      const userId = (req.user as any).id;
+      const items = await storage.getUserCart(userId);
+      res.json({ items: items || [] });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch user cart" });
+    }
+  });
+
+  // Save user's cart (for logged in users)
+  app.post("/api/cart/user", async (req, res) => {
+    try {
+      if (!req.isAuthenticated() || !req.user) {
+        return res.status(401).json({ error: "Not authenticated" });
+      }
+      const userId = (req.user as any).id;
+      const { items } = req.body;
+      const savedItems = await storage.saveUserCart(userId, items);
+      res.json({ items: savedItems });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to save user cart" });
+    }
+  });
+
   // ============== ORDER ROUTES ==============
   
   // Create order (checkout)
