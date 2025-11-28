@@ -31,13 +31,21 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
+      className="group relative perspective"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       data-testid={`card-product-${product.id}`}
     >
       <Link href={`/product/${product.id}`}>
-        <div className="relative overflow-hidden rounded-lg bg-card border border-card-border product-card-hover cursor-pointer">
+        <motion.div 
+          className="relative overflow-hidden rounded-lg bg-card border border-card-border product-card-hover cursor-pointer"
+          style={{ perspective: "1000px" }}
+          animate={{
+            rotateX: isHovered ? 5 : 0,
+            rotateY: isHovered ? -5 : 0,
+          }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
           {/* Image Container */}
           <div className="relative aspect-[4/5] overflow-hidden bg-muted/30">
             <motion.img
@@ -148,7 +156,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       </Link>
     </motion.div>
   );

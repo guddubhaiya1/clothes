@@ -96,8 +96,9 @@ export function CategoryCards() {
             <motion.div key={category.id} variants={itemVariants}>
               <Link href={`/shop?category=${category.id}`}>
                 <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
+                  whileHover={{ scale: 1.02, y: -5, rotateX: 5, rotateY: -5 }}
                   whileTap={{ scale: 0.98 }}
+                  style={{ perspective: "1000px" }}
                   className={`group relative h-full overflow-hidden rounded-lg bg-gradient-to-br ${category.gradient} border border-border/50 p-6 cursor-pointer transition-all duration-300 hover:border-primary/50 hover:shadow-lg`}
                   data-testid={`link-category-${category.id}`}
                 >

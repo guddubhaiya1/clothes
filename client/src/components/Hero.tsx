@@ -12,42 +12,66 @@ export function Hero() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-30 dark:opacity-20" />
       
-      {/* Floating Shapes */}
+      {/* Floating Shapes - 3D Effect */}
       <motion.div
         animate={{ 
           y: [0, -20, 0],
           rotate: [0, 5, 0],
+          rotateX: [0, 10, 0],
+          rotateY: [0, 15, 0],
         }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        style={{ perspective: "1200px" }}
         className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl"
       />
       <motion.div
         animate={{ 
           y: [0, 20, 0],
           rotate: [0, -5, 0],
+          rotateX: [0, -10, 0],
+          rotateY: [0, -15, 0],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        style={{ perspective: "1200px" }}
         className="absolute bottom-1/4 right-1/4 w-40 h-40 md:w-72 md:h-72 rounded-full bg-gradient-to-br from-accent/20 to-neon-pink/20 blur-3xl"
       />
       
-      {/* Floating Code Symbols */}
+      {/* Floating Code Symbols - 3D Rotating */}
       <motion.div
-        animate={{ y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }}
+        animate={{ 
+          y: [0, -30, 0], 
+          opacity: [0.3, 0.6, 0.3],
+          rotateX: [0, 180, 360],
+          rotateZ: [0, 10, 0],
+        }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        style={{ perspective: "1000px" }}
         className="absolute top-20 right-10 md:right-32 text-primary/20 font-mono text-4xl md:text-6xl font-bold hidden sm:block"
       >
         {"{ }"}
       </motion.div>
       <motion.div
-        animate={{ y: [0, 20, 0], opacity: [0.2, 0.5, 0.2] }}
+        animate={{ 
+          y: [0, 20, 0], 
+          opacity: [0.2, 0.5, 0.2],
+          rotateY: [0, 180, 360],
+          rotateZ: [0, -10, 0],
+        }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        style={{ perspective: "1000px" }}
         className="absolute bottom-32 left-10 md:left-32 text-accent/20 font-mono text-3xl md:text-5xl font-bold hidden sm:block"
       >
         {"</>"}
       </motion.div>
       <motion.div
-        animate={{ y: [0, -15, 0], opacity: [0.25, 0.55, 0.25] }}
+        animate={{ 
+          y: [0, -15, 0], 
+          opacity: [0.25, 0.55, 0.25],
+          rotateX: [0, 360, 0],
+          rotate: [0, 360, 0],
+        }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        style={{ perspective: "1000px" }}
         className="absolute top-1/3 left-20 text-neon-pink/20 font-mono text-2xl md:text-4xl font-bold hidden md:block"
       >
         {"//"}
