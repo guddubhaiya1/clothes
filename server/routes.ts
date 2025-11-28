@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { addToCartSchema, orderInfoSchema } from "@shared/schema";
+import { addToCartSchema, orderInfoSchema, uploadProductSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(
@@ -199,6 +199,23 @@ export async function registerRoutes(
       res.json(order);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch order" });
+    }
+  });
+
+  // ============== ADMIN ROUTES ==============
+
+  // Create new product (admin)
+  app.post("/api/admin/products", async (req, res) => {
+    try {
+      const result = uploadProductSchema.safeParse(req.body);
+      if (!result.success) {
+        return res.status(400).json({ error: "Invalid product data", details: result.error.issues });
+      }
+
+      const product = await storage.createProduct(result.data);
+      res.status(201).json(product);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create product" });
     }
   });
 

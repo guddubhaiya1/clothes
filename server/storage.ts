@@ -4,7 +4,8 @@ import type {
   Cart, 
   CartItem, 
   Order, 
-  OrderInfo 
+  OrderInfo,
+  UploadProductInput
 } from "@shared/schema";
 
 const products: Product[] = [
@@ -198,6 +199,7 @@ export interface IStorage {
   getProductsByCategory(category: string): Promise<Product[]>;
   getFeaturedProducts(): Promise<Product[]>;
   getNewProducts(): Promise<Product[]>;
+  createProduct(productData: UploadProductInput): Promise<Product>;
   
   getCart(cartId: string): Promise<Cart | undefined>;
   createCart(): Promise<Cart>;
@@ -213,31 +215,57 @@ export interface IStorage {
 export class MemStorage implements IStorage {
   private carts: Map<string, Cart>;
   private orders: Map<string, Order>;
+  private dynamicProducts: Product[];
 
   constructor() {
     this.carts = new Map();
     this.orders = new Map();
+    this.dynamicProducts = [];
   }
 
   async getProducts(): Promise<Product[]> {
-    return products;
+    return [...products, ...this.dynamicProducts];
   }
 
   async getProductById(id: string): Promise<Product | undefined> {
-    return products.find((p) => p.id === id);
+    return products.find((p) => p.id === id) || this.dynamicProducts.find((p) => p.id === id);
   }
 
   async getProductsByCategory(category: string): Promise<Product[]> {
-    if (category === "all") return products;
-    return products.filter((p) => p.category === category);
+    const allProducts = [...products, ...this.dynamicProducts];
+    if (category === "all") return allProducts;
+    return allProducts.filter((p) => p.category === category);
   }
 
   async getFeaturedProducts(): Promise<Product[]> {
-    return products.filter((p) => p.featured);
+    const allProducts = [...products, ...this.dynamicProducts];
+    return allProducts.filter((p) => p.featured);
   }
 
   async getNewProducts(): Promise<Product[]> {
-    return products.filter((p) => p.new);
+    const allProducts = [...products, ...this.dynamicProducts];
+    return allProducts.filter((p) => p.new);
+  }
+
+  async createProduct(productData: UploadProductInput): Promise<Product> {
+    const newProduct: Product = {
+      id: productData.id || `product-${Date.now()}`,
+      name: productData.name,
+      tagline: productData.tagline,
+      description: productData.description,
+      price: productData.price,
+      originalPrice: productData.originalPrice,
+      category: productData.category,
+      type: productData.type,
+      colors: productData.colors,
+      sizes: productData.sizes,
+      images: productData.images,
+      featured: productData.featured || false,
+      new: productData.new || true,
+      inStock: productData.inStock || true,
+    };
+    this.dynamicProducts.push(newProduct);
+    return newProduct;
   }
 
   async getCart(cartId: string): Promise<Cart | undefined> {
