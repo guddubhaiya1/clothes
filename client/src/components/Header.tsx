@@ -31,6 +31,46 @@ export function Header() {
   const { toggleCart, getItemCount } = useCart();
   const itemCount = getItemCount();
 
+  const highlightText = (query: string) => {
+    clearHighlight();
+    if (!query.trim()) return;
+
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+
+    const nodesToReplace: Array<{ node: Node; parent: Node }> = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.textContent?.toLowerCase().includes(query.toLowerCase())) {
+        nodesToReplace.push({ node, parent: node.parentNode! });
+      }
+    }
+
+    nodesToReplace.forEach(({ node, parent }) => {
+      const regex = new RegExp(`(${query})`, "gi");
+      const span = document.createElement("span");
+      span.innerHTML = node.textContent!.replace(
+        regex,
+        '<mark style="background-color: #fbbf24; padding: 2px 4px; border-radius: 2px;">$1</mark>'
+      );
+      parent.replaceChild(span, node);
+    });
+  };
+
+  const clearHighlight = () => {
+    document.querySelectorAll("mark").forEach((mark) => {
+      const parent = mark.parentNode;
+      if (parent) {
+        parent.replaceChild(document.createTextNode(mark.textContent || ""), mark);
+        parent.normalize();
+      }
+    });
+  };
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -108,17 +148,27 @@ export function Header() {
 
             {/* Right Section */}
             <div className="flex items-center gap-2">
-              {/* Search - Desktop */}
+              {/* Find in Page - Desktop */}
               <div className="hidden md:flex items-center gap-2">
                 {isSearchOpen ? (
                   <input
                     type="text"
-                    placeholder="Search products..."
+                    placeholder="Find in page..."
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      highlightText(e.target.value);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Escape") {
+                        setIsSearchOpen(false);
+                        setSearchQuery("");
+                        clearHighlight();
+                      }
+                    }}
                     autoFocus
                     className="w-48 px-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                    data-testid="input-search"
+                    data-testid="input-find-in-page"
                   />
                 ) : null}
                 <Button
@@ -126,7 +176,10 @@ export function Header() {
                   size="icon"
                   onClick={() => {
                     setIsSearchOpen(!isSearchOpen);
-                    if (isSearchOpen) setSearchQuery("");
+                    if (isSearchOpen) {
+                      setSearchQuery("");
+                      clearHighlight();
+                    }
                   }}
                   data-testid="button-search"
                 >
