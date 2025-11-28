@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useRef } from "react";
+import { useLocation } from "wouter";
 import type { CartItem, Product, Size, Color } from "@shared/schema";
 
 interface CartContextType {
@@ -33,8 +34,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   });
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState<{ id: string } | null>(null);
+  const [location] = useLocation();
+  const lastUserIdRef = useRef<string | null>(null);
 
-  // Fetch user and load their cart if logged in
+  // Check auth status on mount and on location change (e.g., after logout)
   useEffect(() => {
     const fetchUserAndCart = async () => {
       try {
@@ -42,26 +45,31 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         const userData = await userRes.json();
         
         if (userData?.id) {
+          // User is logged in
+          const userChanged = lastUserIdRef.current !== userData.id;
+          lastUserIdRef.current = userData.id;
           setUser(userData);
-          // Load user's cart from database
-          const cartRes = await fetch(`/api/cart/user`);
-          if (cartRes.ok) {
-            const cartData = await cartRes.json();
-            if (cartData?.items) {
-              setItems(cartData.items);
+          
+          if (userChanged) {
+            // Load user's cart from database only if user changed
+            const cartRes = await fetch(`/api/cart/user`);
+            if (cartRes.ok) {
+              const cartData = await cartRes.json();
+              if (cartData?.items) {
+                setItems(cartData.items);
+              } else {
+                setItems([]);
+              }
             }
           }
         } else {
-          setUser(null);
-          // Load cart from localStorage for guest users
-          const stored = localStorage.getItem("codedrip-cart");
-          if (stored) {
-            try {
-              setItems(JSON.parse(stored));
-            } catch {
-              setItems([]);
-            }
+          // User is not logged in
+          if (lastUserIdRef.current !== null) {
+            // User just logged out - save current items to localStorage
+            localStorage.setItem("codedrip-cart", JSON.stringify(items));
+            lastUserIdRef.current = null;
           }
+          setUser(null);
         }
       } catch (error) {
         console.error("Failed to fetch user or cart:", error);
@@ -69,7 +77,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     };
 
     fetchUserAndCart();
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     if (user?.id) {
