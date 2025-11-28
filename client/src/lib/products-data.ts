@@ -1,13 +1,13 @@
-import { randomUUID } from "crypto";
-import type { 
-  Product, 
-  Cart, 
-  CartItem, 
-  Order, 
-  OrderInfo 
-} from "@shared/schema";
+import type { Product } from "@shared/schema";
 
-const products: Product[] = [
+import blackHoodie from "@assets/generated_images/black_premium_dev_hoodie.png";
+import whiteTshirt from "@assets/generated_images/white_minimal_dev_tshirt.png";
+import navySweatshirt from "@assets/generated_images/navy_blue_dev_sweatshirt.png";
+import grayTshirt from "@assets/generated_images/gray_database_tshirt.png";
+import greenHoodie from "@assets/generated_images/green_medical_hoodie.png";
+import burgundyShirt from "@assets/generated_images/burgundy_engineer_shirt.png";
+
+export const products: Product[] = [
   {
     id: "committed-hoodie",
     name: "Committed",
@@ -19,7 +19,7 @@ const products: Product[] = [
     type: "hoodie",
     colors: ["black", "charcoal", "navy"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    images: ["/products/black-hoodie.png"],
+    images: [blackHoodie],
     featured: true,
     new: true,
     inStock: true,
@@ -34,7 +34,7 @@ const products: Product[] = [
     type: "t-shirt",
     colors: ["white", "black", "charcoal"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    images: ["/products/white-tshirt.png"],
+    images: [whiteTshirt],
     featured: true,
     new: false,
     inStock: true,
@@ -50,7 +50,7 @@ const products: Product[] = [
     type: "sweatshirt",
     colors: ["navy", "charcoal", "black"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    images: ["/products/navy-sweatshirt.png"],
+    images: [navySweatshirt],
     featured: true,
     new: false,
     inStock: true,
@@ -65,7 +65,7 @@ const products: Product[] = [
     type: "t-shirt",
     colors: ["charcoal", "white", "black"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    images: ["/products/gray-tshirt.png"],
+    images: [grayTshirt],
     featured: false,
     new: true,
     inStock: true,
@@ -80,7 +80,7 @@ const products: Product[] = [
     type: "hoodie",
     colors: ["forest", "navy", "black"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    images: ["/products/green-hoodie.png"],
+    images: [greenHoodie],
     featured: true,
     new: true,
     inStock: true,
@@ -95,7 +95,7 @@ const products: Product[] = [
     type: "t-shirt",
     colors: ["white", "forest", "navy"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    images: ["/products/white-tshirt.png"],
+    images: [whiteTshirt],
     featured: false,
     new: false,
     inStock: true,
@@ -110,7 +110,7 @@ const products: Product[] = [
     type: "long-sleeve",
     colors: ["burgundy", "charcoal", "navy"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    images: ["/products/burgundy-shirt.png"],
+    images: [burgundyShirt],
     featured: true,
     new: false,
     inStock: true,
@@ -125,7 +125,7 @@ const products: Product[] = [
     type: "t-shirt",
     colors: ["black", "charcoal", "white"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    images: ["/products/gray-tshirt.png"],
+    images: [grayTshirt],
     featured: false,
     new: true,
     inStock: true,
@@ -140,7 +140,7 @@ const products: Product[] = [
     type: "hoodie",
     colors: ["black", "white", "charcoal"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    images: ["/products/black-hoodie.png"],
+    images: [blackHoodie],
     featured: false,
     new: true,
     inStock: true,
@@ -155,7 +155,7 @@ const products: Product[] = [
     type: "t-shirt",
     colors: ["black", "charcoal", "navy"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    images: ["/products/black-hoodie.png"],
+    images: [blackHoodie],
     featured: false,
     new: false,
     inStock: true,
@@ -170,7 +170,7 @@ const products: Product[] = [
     type: "sweatshirt",
     colors: ["charcoal", "black", "navy"],
     sizes: ["S", "M", "L", "XL", "XXL"],
-    images: ["/products/navy-sweatshirt.png"],
+    images: [navySweatshirt],
     featured: false,
     new: false,
     inStock: true,
@@ -185,174 +185,26 @@ const products: Product[] = [
     type: "t-shirt",
     colors: ["white", "navy", "forest"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    images: ["/products/white-tshirt.png"],
+    images: [whiteTshirt],
     featured: false,
     new: false,
     inStock: true,
   },
 ];
 
-export interface IStorage {
-  getProducts(): Promise<Product[]>;
-  getProductById(id: string): Promise<Product | undefined>;
-  getProductsByCategory(category: string): Promise<Product[]>;
-  getFeaturedProducts(): Promise<Product[]>;
-  getNewProducts(): Promise<Product[]>;
-  
-  getCart(cartId: string): Promise<Cart | undefined>;
-  createCart(): Promise<Cart>;
-  addToCart(cartId: string, item: CartItem): Promise<Cart>;
-  updateCartItem(cartId: string, productId: string, size: string, color: string, quantity: number): Promise<Cart>;
-  removeFromCart(cartId: string, productId: string, size: string, color: string): Promise<Cart>;
-  clearCart(cartId: string): Promise<Cart>;
-  
-  createOrder(orderData: { items: CartItem[]; customerInfo: OrderInfo; subtotal: number; shipping: number; total: number }): Promise<Order>;
-  getOrder(orderId: string): Promise<Order | undefined>;
+export function getProductById(id: string): Product | undefined {
+  return products.find((p) => p.id === id);
 }
 
-export class MemStorage implements IStorage {
-  private carts: Map<string, Cart>;
-  private orders: Map<string, Order>;
-
-  constructor() {
-    this.carts = new Map();
-    this.orders = new Map();
-  }
-
-  async getProducts(): Promise<Product[]> {
-    return products;
-  }
-
-  async getProductById(id: string): Promise<Product | undefined> {
-    return products.find((p) => p.id === id);
-  }
-
-  async getProductsByCategory(category: string): Promise<Product[]> {
-    if (category === "all") return products;
-    return products.filter((p) => p.category === category);
-  }
-
-  async getFeaturedProducts(): Promise<Product[]> {
-    return products.filter((p) => p.featured);
-  }
-
-  async getNewProducts(): Promise<Product[]> {
-    return products.filter((p) => p.new);
-  }
-
-  async getCart(cartId: string): Promise<Cart | undefined> {
-    return this.carts.get(cartId);
-  }
-
-  async createCart(): Promise<Cart> {
-    const cart: Cart = {
-      id: randomUUID(),
-      items: [],
-    };
-    this.carts.set(cart.id, cart);
-    return cart;
-  }
-
-  async addToCart(cartId: string, item: CartItem): Promise<Cart> {
-    let cart = this.carts.get(cartId);
-    if (!cart) {
-      cart = await this.createCart();
-    }
-
-    const existingIndex = cart.items.findIndex(
-      (i) => i.productId === item.productId && i.size === item.size && i.color === item.color
-    );
-
-    if (existingIndex !== -1) {
-      cart.items[existingIndex].quantity += item.quantity;
-    } else {
-      cart.items.push(item);
-    }
-
-    this.carts.set(cart.id, cart);
-    return cart;
-  }
-
-  async updateCartItem(
-    cartId: string,
-    productId: string,
-    size: string,
-    color: string,
-    quantity: number
-  ): Promise<Cart> {
-    const cart = this.carts.get(cartId);
-    if (!cart) {
-      throw new Error("Cart not found");
-    }
-
-    const itemIndex = cart.items.findIndex(
-      (i) => i.productId === productId && i.size === size && i.color === color
-    );
-
-    if (itemIndex === -1) {
-      throw new Error("Item not found in cart");
-    }
-
-    if (quantity < 1) {
-      cart.items.splice(itemIndex, 1);
-    } else {
-      cart.items[itemIndex].quantity = quantity;
-    }
-
-    this.carts.set(cart.id, cart);
-    return cart;
-  }
-
-  async removeFromCart(cartId: string, productId: string, size: string, color: string): Promise<Cart> {
-    const cart = this.carts.get(cartId);
-    if (!cart) {
-      throw new Error("Cart not found");
-    }
-
-    cart.items = cart.items.filter(
-      (i) => !(i.productId === productId && i.size === size && i.color === color)
-    );
-
-    this.carts.set(cart.id, cart);
-    return cart;
-  }
-
-  async clearCart(cartId: string): Promise<Cart> {
-    const cart = this.carts.get(cartId);
-    if (!cart) {
-      throw new Error("Cart not found");
-    }
-
-    cart.items = [];
-    this.carts.set(cart.id, cart);
-    return cart;
-  }
-
-  async createOrder(orderData: {
-    items: CartItem[];
-    customerInfo: OrderInfo;
-    subtotal: number;
-    shipping: number;
-    total: number;
-  }): Promise<Order> {
-    const order: Order = {
-      id: `CD-${Date.now().toString(36).toUpperCase()}`,
-      items: orderData.items,
-      customerInfo: orderData.customerInfo,
-      subtotal: orderData.subtotal,
-      shipping: orderData.shipping,
-      total: orderData.total,
-      status: "confirmed",
-      createdAt: new Date().toISOString(),
-    };
-
-    this.orders.set(order.id, order);
-    return order;
-  }
-
-  async getOrder(orderId: string): Promise<Order | undefined> {
-    return this.orders.get(orderId);
-  }
+export function getProductsByCategory(category: string): Product[] {
+  if (category === "all") return products;
+  return products.filter((p) => p.category === category);
 }
 
-export const storage = new MemStorage();
+export function getFeaturedProducts(): Product[] {
+  return products.filter((p) => p.featured);
+}
+
+export function getNewProducts(): Product[] {
+  return products.filter((p) => p.new);
+}
