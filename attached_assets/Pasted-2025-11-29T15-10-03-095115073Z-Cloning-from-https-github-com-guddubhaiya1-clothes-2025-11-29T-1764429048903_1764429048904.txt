@@ -1,0 +1,41 @@
+2025-11-29T15:10:03.095115073Z ==> Cloning from https://github.com/guddubhaiya1/clothes
+2025-11-29T15:10:04.357321325Z ==> Checking out commit 9298e17bc21a8fad91802bc17ab5836621eb2ab2 in branch main
+2025-11-29T15:10:08.029218112Z ==> Using Node.js version 22.16.0 (default)
+2025-11-29T15:10:08.052968913Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2025-11-29T15:10:10.186082217Z ==> Running build command 'npm install && npm run build'...
+2025-11-29T15:10:19.185829587Z 
+2025-11-29T15:10:19.185853658Z added 461 packages, and audited 462 packages in 9s
+2025-11-29T15:10:19.185915262Z 
+2025-11-29T15:10:19.185922252Z 64 packages are looking for funding
+2025-11-29T15:10:19.185965015Z   run `npm fund` for details
+2025-11-29T15:10:19.20716926Z 
+2025-11-29T15:10:19.207188821Z 9 vulnerabilities (3 low, 5 moderate, 1 high)
+2025-11-29T15:10:19.207193191Z 
+2025-11-29T15:10:19.207197482Z To address issues that do not require attention, run:
+2025-11-29T15:10:19.207201292Z   npm audit fix
+2025-11-29T15:10:19.207204712Z 
+2025-11-29T15:10:19.207208212Z To address all issues (including breaking changes), run:
+2025-11-29T15:10:19.207212443Z   npm audit fix --force
+2025-11-29T15:10:19.207215873Z 
+2025-11-29T15:10:19.207220013Z Run `npm audit` for details.
+2025-11-29T15:10:19.484600455Z 
+2025-11-29T15:10:19.484618416Z > rest-express@1.0.0 build
+2025-11-29T15:10:19.484623476Z > tsx script/build.ts
+2025-11-29T15:10:19.484626846Z 
+2025-11-29T15:10:20.356007838Z building client...
+2025-11-29T15:10:20.383510408Z failed to load config from /opt/render/project/src/vite.config.ts
+2025-11-29T15:10:20.383684228Z Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@replit/vite-plugin-runtime-error-modal' imported from /opt/render/project/src/vite.config.ts.timestamp-1764429020374-bdee669d02a34.mjs
+2025-11-29T15:10:20.383694409Z     at Object.getPackageJSONURL (node:internal/modules/package_json_reader:256:9)
+2025-11-29T15:10:20.38369964Z     at packageResolve (node:internal/modules/esm/resolve:768:81)
+2025-11-29T15:10:20.38370251Z     at moduleResolve (node:internal/modules/esm/resolve:854:18)
+2025-11-29T15:10:20.38370523Z     at defaultResolve (node:internal/modules/esm/resolve:984:11)
+2025-11-29T15:10:20.38370799Z     at nextResolve (node:internal/modules/esm/hooks:748:28)
+2025-11-29T15:10:20.38371217Z     at resolveBase (file:///opt/render/project/src/node_modules/tsx/dist/esm/index.mjs?1764429019622:2:3744)
+2025-11-29T15:10:20.38371639Z     at resolveDirectory (file:///opt/render/project/src/node_modules/tsx/dist/esm/index.mjs?1764429019622:2:4243)
+2025-11-29T15:10:20.383719221Z     at resolveTsPaths (file:///opt/render/project/src/node_modules/tsx/dist/esm/index.mjs?1764429019622:2:4984)
+2025-11-29T15:10:20.383722011Z     at async resolve (file:///opt/render/project/src/node_modules/tsx/dist/esm/index.mjs?1764429019622:2:5355)
+2025-11-29T15:10:20.383726241Z     at async nextResolve (node:internal/modules/esm/hooks:748:22) {
+2025-11-29T15:10:20.383731431Z   code: 'ERR_MODULE_NOT_FOUND'
+2025-11-29T15:10:20.383772584Z }
+2025-11-29T15:10:20.48539158Z ==> Build failed 😞
+2025-11-29T15:10:20.485413392Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
