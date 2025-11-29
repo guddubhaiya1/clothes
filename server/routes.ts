@@ -382,8 +382,29 @@ export async function registerRoutes(
       }
       const userId = (req.user as any).id;
       const orders = await storage.getUserOrders(userId);
-      res.json(orders);
+      
+      // Transform database orders to match frontend expected format
+      const transformedOrders = orders.map((order: any) => ({
+        id: order.id,
+        firstName: order.firstName,
+        lastName: order.lastName,
+        email: order.email,
+        address: order.address,
+        city: order.city,
+        state: order.state,
+        zipCode: order.zipCode,
+        items: Array.isArray(order.items) ? order.items : [],
+        subtotal: order.subtotal ? order.subtotal.toString() : "0",
+        shipping: order.shipping ? order.shipping.toString() : "0",
+        tax: order.tax ? order.tax.toString() : "0",
+        total: order.total ? order.total.toString() : "0",
+        status: order.status || "confirmed",
+        createdAt: order.createdAt || new Date().toISOString(),
+      }));
+      
+      res.json(transformedOrders);
     } catch (error) {
+      console.error("Error fetching user orders:", error);
       res.status(500).json({ error: "Failed to fetch user orders" });
     }
   });

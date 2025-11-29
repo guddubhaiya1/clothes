@@ -34,10 +34,15 @@ interface UserOrder {
 
 export default function OrderHistory() {
   const { toast } = useToast();
-  const { data: orders = [], isLoading } = useQuery<UserOrder[]>({
+  const { data: orders = [], isLoading, error } = useQuery<UserOrder[]>({
     queryKey: ["/api/user/orders"],
     retry: 1,
   });
+
+  // Debug: Log auth errors
+  if (error) {
+    console.error("Order history error:", error);
+  }
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-IN", {
@@ -88,7 +93,25 @@ export default function OrderHistory() {
           </p>
         </motion.div>
 
-        {isLoading ? (
+        {error ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="text-center py-12"
+          >
+            <Package className="w-12 h-12 text-destructive mx-auto mb-4 opacity-50" />
+            <h3 className="text-lg font-semibold mb-2">Authentication Required</h3>
+            <p className="text-muted-foreground mb-6">
+              Please log in to view your order history.
+            </p>
+            <Link href="/login">
+              <Button variant="default" data-testid="button-login-to-view">
+                Login
+              </Button>
+            </Link>
+          </motion.div>
+        ) : isLoading ? (
           <div className="flex items-center justify-center py-12">
             <div className="text-muted-foreground">Loading your orders...</div>
           </div>
