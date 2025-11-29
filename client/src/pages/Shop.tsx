@@ -34,9 +34,8 @@ const sortOptions: { value: SortOption; label: string }[] = [
 const categoryLabels: Record<string, string> = {
   all: "All Products",
   developer: "Developer",
-  medical: "Medical",
-  engineering: "Engineering",
-  designer: "Designer",
+  tester: "Tester",
+  "tech-lead": "Tech Leads",
 };
 
 export default function Shop() {

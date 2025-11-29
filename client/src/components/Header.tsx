@@ -16,8 +16,8 @@ interface User {
 const navLinks = [
   { href: "/shop", label: "Shop" },
   { href: "/shop?category=developer", label: "Developer" },
-  { href: "/shop?category=medical", label: "Medical" },
-  { href: "/shop?category=engineering", label: "Engineering" },
+  { href: "/shop?category=tester", label: "Tester" },
+  { href: "/shop?category=tech-lead", label: "Tech Leads" },
 ];
 
 export function Header() {

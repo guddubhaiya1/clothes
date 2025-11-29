@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Code2, Stethoscope, Wrench, Palette, ArrowRight } from "lucide-react";
+import { Code2, Bug, Crown, ArrowRight } from "lucide-react";
 
 const categories = [
   {
@@ -14,34 +14,24 @@ const categories = [
     count: 12,
   },
   {
-    id: "medical",
-    name: "Medical",
-    tagline: "// status: ALWAYS_ON_CALL",
-    description: "Comfort for 24-hour shifts.",
-    icon: Stethoscope,
-    gradient: "from-emerald-500/20 to-teal-500/20",
-    accentColor: "text-emerald-500",
+    id: "tester",
+    name: "Tester",
+    tagline: "// bug_found: true | stress: HIGH",
+    description: "Quality assurance perfectionists.",
+    icon: Bug,
+    gradient: "from-orange-500/20 to-red-500/20",
+    accentColor: "text-orange-500",
     count: 8,
   },
   {
-    id: "engineering",
-    name: "Engineering",
-    tagline: "// complexity: O(style)",
-    description: "Built to last. Designed to impress.",
-    icon: Wrench,
-    gradient: "from-orange-500/20 to-red-500/20",
-    accentColor: "text-orange-500",
-    count: 6,
-  },
-  {
-    id: "designer",
-    name: "Designer",
-    tagline: "// margin: 0 | padding: immaculate",
-    description: "Pixel perfect, always.",
-    icon: Palette,
-    gradient: "from-pink-500/20 to-purple-500/20",
-    accentColor: "text-pink-500",
-    count: 4,
+    id: "tech-lead",
+    name: "Tech Leads",
+    tagline: "// leadership: true | vision: CLEAR",
+    description: "Architects, managers, decision makers.",
+    icon: Crown,
+    gradient: "from-emerald-500/20 to-teal-500/20",
+    accentColor: "text-emerald-500",
+    count: 10,
   },
 ];
 
@@ -90,7 +80,7 @@ export function CategoryCards() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {categories.map((category) => (
             <motion.div key={category.id} variants={itemVariants}>

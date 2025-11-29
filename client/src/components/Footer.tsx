@@ -10,8 +10,8 @@ const footerLinks = {
   shop: [
     { name: "All Products", href: "/shop" },
     { name: "Developer", href: "/shop?category=developer" },
-    { name: "Medical", href: "/shop?category=medical" },
-    { name: "Engineering", href: "/shop?category=engineering" },
+    { name: "Tester", href: "/shop?category=tester" },
+    { name: "Tech Leads", href: "/shop?category=tech-lead" },
     { name: "New Arrivals", href: "/shop?filter=new" },
   ],
   support: [
