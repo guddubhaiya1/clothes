@@ -319,4 +319,18 @@
     background-size: 200% 100%;
     animation: shimmer 1.5s ease-in-out infinite;
   }
+
+  /* Banner flash animation */
+  .animate-banner-flash {
+    animation: bannerFlash 2s ease-in-out infinite;
+  }
+
+  @keyframes bannerFlash {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
 }

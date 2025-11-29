@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartPanel } from "@/components/CartPanel";
+import { SaleBanner } from "@/components/SaleBanner";
 import { ThemeProvider } from "@/lib/theme-provider";
 import { CartProvider } from "@/lib/cart-context";
 import Home from "@/pages/Home";
@@ -73,6 +74,7 @@ function App() {
         <CartProvider>
           <TooltipProvider>
             <div className="min-h-screen flex flex-col">
+              <SaleBanner />
               <Header />
               <div className="flex-1">
                 <Router />
