@@ -594,7 +594,7 @@ export default function Checkout() {
                       ) : (
                         <>
                           <Check className="mr-2 h-4 w-4" />
-                          Confirm Order — ${total.toFixed(2)}
+                          Confirm Order — ₹{total.toFixed(2)}
                         </>
                       )}
                     </Button>

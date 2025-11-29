@@ -204,7 +204,7 @@ export function CartPanel() {
                               </Button>
                             </div>
                             <span className="font-semibold">
-                              ${(product.price * item.quantity).toFixed(2)}
+                              ₹{(product.price * item.quantity).toFixed(2)}
                             </span>
                           </div>
                         </div>
@@ -222,7 +222,7 @@ export function CartPanel() {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>₹{subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Shipping</span>
@@ -230,18 +230,18 @@ export function CartPanel() {
                       {shipping === 0 ? (
                         <span className="text-accent">Free</span>
                       ) : (
-                        `$${shipping.toFixed(2)}`
+                        `₹${shipping.toFixed(2)}`
                       )}
                     </span>
                   </div>
                   {shipping > 0 && (
                     <p className="text-xs text-muted-foreground">
-                      Add ${(100 - subtotal).toFixed(2)} more for free shipping
+                      Add ₹{(1000 - subtotal).toFixed(2)} more for free shipping
                     </p>
                   )}
                   <div className="flex justify-between pt-2 border-t border-border text-base font-semibold">
                     <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>₹{total.toFixed(2)}</span>
                   </div>
                 </div>
 

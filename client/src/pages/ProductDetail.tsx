@@ -218,10 +218,10 @@ export default function ProductDetail() {
 
             {/* Price */}
             <div className="flex items-baseline gap-3">
-              <span className="text-3xl font-bold">${product.price.toFixed(2)}</span>
+              <span className="text-3xl font-bold">₹{product.price.toFixed(2)}</span>
               {product.originalPrice && (
                 <span className="text-lg text-muted-foreground line-through">
-                  ${product.originalPrice.toFixed(2)}
+                  ₹{product.originalPrice.toFixed(2)}
                 </span>
               )}
             </div>
@@ -319,7 +319,7 @@ export default function ProductDetail() {
               data-testid="button-add-to-cart"
             >
               <ShoppingBag className="mr-2 h-5 w-5" />
-              Add to Cart — ${(product.price * quantity).toFixed(2)}
+              Add to Cart — ₹{(product.price * quantity).toFixed(2)}
             </Button>
 
             {/* Features */}
