@@ -74,8 +74,8 @@ function App() {
         <CartProvider>
           <TooltipProvider>
             <div className="min-h-screen flex flex-col">
-              <SaleBanner />
               <Header />
+              <SaleBanner />
               <div className="flex-1">
                 <Router />
               </div>
