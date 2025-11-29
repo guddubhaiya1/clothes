@@ -146,3 +146,13 @@ export const userCartsTable = pgTable("user_carts", {
   items: json("items").$type<CartItem[]>().notNull().default([]),
   updatedAt: varchar("updated_at").notNull(),
 });
+
+// Subscribers Table
+export const subscribersTable = pgTable("subscribers", {
+  id: varchar("id").primaryKey(),
+  email: varchar("email").notNull().unique(),
+  createdAt: varchar("created_at").notNull(),
+});
+
+export const subscriberInsertSchema = createInsertSchema(subscribersTable).omit({ id: true });
+export type InsertSubscriber = z.infer<typeof subscriberInsertSchema>;

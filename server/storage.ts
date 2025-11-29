@@ -5,7 +5,8 @@ import type {
   CartItem, 
   Order, 
   OrderInfo,
-  UploadProductInput
+  UploadProductInput,
+  InsertSubscriber
 } from "@shared/schema";
 
 const products: Product[] = [
