@@ -315,7 +315,7 @@ export default function Checkout() {
                           <FormLabel>Email</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="you@example.com"
+                              placeholder="rajesh.sharma@gmail.com"
                               type="email"
                               {...field}
                               data-testid="input-email"
@@ -335,7 +335,7 @@ export default function Checkout() {
                             <FormLabel>First Name</FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="John"
+                                placeholder="Rajesh"
                                 {...field}
                                 data-testid="input-first-name"
                               />
@@ -352,7 +352,7 @@ export default function Checkout() {
                             <FormLabel>Last Name</FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="Doe"
+                                placeholder="Sharma"
                                 {...field}
                                 data-testid="input-last-name"
                               />
@@ -371,7 +371,7 @@ export default function Checkout() {
                           <FormLabel>Address</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="123 Main St"
+                              placeholder="123 MG Road, Bandra"
                               {...field}
                               data-testid="input-address"
                             />
@@ -390,7 +390,7 @@ export default function Checkout() {
                             <FormLabel>City</FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="San Francisco"
+                                placeholder="Mumbai"
                                 {...field}
                                 data-testid="input-city"
                               />
@@ -405,13 +405,18 @@ export default function Checkout() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>State</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="CA"
-                                {...field}
-                                data-testid="input-state"
-                              />
-                            </FormControl>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger data-testid="select-state">
+                                  <SelectValue placeholder="Select state" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {indianStates.map((state) => (
+                                  <SelectItem key={state} value={state}>{state}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
                             <FormMessage />
                           </FormItem>
                         )}
@@ -421,10 +426,10 @@ export default function Checkout() {
                         name="zipCode"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>ZIP Code</FormLabel>
+                            <FormLabel>PIN Code</FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="94102"
+                                placeholder="400050"
                                 {...field}
                                 data-testid="input-zip"
                               />
@@ -471,7 +476,7 @@ export default function Checkout() {
                             <FormLabel>Phone</FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="(555) 123-4567"
+                                placeholder="+91 98765 43210"
                                 type="tel"
                                 {...field}
                                 data-testid="input-phone"
@@ -535,7 +540,7 @@ export default function Checkout() {
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Subtotal</span>
-                        <span>${subtotal.toFixed(2)}</span>
+                        <span>₹{subtotal.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Shipping</span>
@@ -543,17 +548,17 @@ export default function Checkout() {
                           {shipping === 0 ? (
                             <span className="text-accent">Free</span>
                           ) : (
-                            `$${shipping.toFixed(2)}`
+                            `₹${shipping.toFixed(2)}`
                           )}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Tax</span>
-                        <span>${tax.toFixed(2)}</span>
+                        <span className="text-muted-foreground">Tax (18% GST)</span>
+                        <span>₹{tax.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between pt-2 border-t border-border text-base font-semibold">
                         <span>Total Amount Due</span>
-                        <span className="text-accent">${total.toFixed(2)}</span>
+                        <span className="text-accent">₹{total.toFixed(2)}</span>
                       </div>
                     </div>
                   </div>
@@ -646,7 +651,7 @@ export default function Checkout() {
                             Qty: {item.quantity}
                           </span>
                           <span className="text-sm font-medium">
-                            ${(product.price * item.quantity).toFixed(2)}
+                            ₹{(product.price * item.quantity).toFixed(2)}
                           </span>
                         </div>
                       </div>
@@ -659,7 +664,7 @@ export default function Checkout() {
               <div className="space-y-2 pt-4 border-t border-border text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Shipping</span>
@@ -667,17 +672,17 @@ export default function Checkout() {
                     {shipping === 0 ? (
                       <span className="text-accent">Free</span>
                     ) : (
-                      `$${shipping.toFixed(2)}`
+                      `₹${shipping.toFixed(2)}`
                     )}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Tax</span>
-                  <span>${tax.toFixed(2)}</span>
+                  <span className="text-muted-foreground">Tax (18% GST)</span>
+                  <span>₹{tax.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between pt-3 border-t border-border text-base font-semibold">
                   <span>Total</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>₹{total.toFixed(2)}</span>
                 </div>
               </div>
 
