@@ -420,4 +420,17 @@
       background-position: -200% center;
     }
   }
+
+  .animate-scroll-horizontal {
+    animation: scrollHorizontal 15s linear infinite;
+  }
+
+  @keyframes scrollHorizontal {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-20%);
+    }
+  }
 }
