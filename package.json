@@ -96,7 +96,10 @@
     "@types/passport-local": "^1.0.38",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "@types/ws": "^8.5.13"
+    "@types/ws": "^8.5.13",
+    "@replit/vite-plugin-runtime-error-modal": "file:./stubs/@replit/vite-plugin-runtime-error-modal",
+    "@replit/vite-plugin-cartographer": "file:./stubs/@replit/vite-plugin-cartographer",
+    "@replit/vite-plugin-dev-banner": "file:./stubs/@replit/vite-plugin-dev-banner"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.8"
