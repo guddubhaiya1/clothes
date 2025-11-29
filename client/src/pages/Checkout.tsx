@@ -33,15 +33,15 @@ const steps = [
   { id: 3, name: "Confirmation", icon: Check },
 ];
 
-const countries = [
-  "United States",
-  "Canada",
-  "United Kingdom",
-  "Australia",
-  "Germany",
-  "France",
-  "Japan",
-  "India",
+const countries = ["India"];
+
+const indianStates = [
+  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+  "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand",
+  "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
+  "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab",
+  "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura",
+  "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi", "Puducherry",
 ];
 
 function getColorHex(color: string): string {
@@ -68,8 +68,8 @@ export default function Checkout() {
   const customerInfoRef = useRef<InsertOrderInfo | null>(null);
 
   const subtotal = getSubtotal(products);
-  const shipping = subtotal > 100 ? 0 : 9.99;
-  const tax = subtotal * 0.08;
+  const shipping = subtotal > 1000 ? 0 : 99;
+  const tax = subtotal * 0.18;
   const total = subtotal + shipping + tax;
 
   const form = useForm<InsertOrderInfo>({
@@ -82,7 +82,7 @@ export default function Checkout() {
       city: "",
       state: "",
       zipCode: "",
-      country: "United States",
+      country: "India",
       phone: "",
     },
   });
@@ -120,6 +120,7 @@ export default function Checkout() {
         customerInfo: customerInfoRef.current,
         subtotal,
         shipping,
+        tax,
         total,
       };
 

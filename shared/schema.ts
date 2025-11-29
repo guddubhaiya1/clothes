@@ -156,3 +156,28 @@ export const subscribersTable = pgTable("subscribers", {
 
 export const subscriberInsertSchema = createInsertSchema(subscribersTable).omit({ id: true });
 export type InsertSubscriber = z.infer<typeof subscriberInsertSchema>;
+
+// Orders Table - stores shipping information and product orders
+export const ordersTable = pgTable("orders", {
+  id: varchar("id").primaryKey(),
+  email: varchar("email").notNull(),
+  firstName: varchar("first_name").notNull(),
+  lastName: varchar("last_name").notNull(),
+  address: text("address").notNull(),
+  city: varchar("city").notNull(),
+  state: varchar("state").notNull(),
+  zipCode: varchar("zip_code").notNull(),
+  country: varchar("country").notNull(),
+  phone: varchar("phone").notNull(),
+  productIds: json("product_ids").$type<string[]>().notNull(),
+  items: json("items").$type<CartItem[]>().notNull(),
+  subtotal: numeric("subtotal", { precision: 10, scale: 2 }).notNull(),
+  shipping: numeric("shipping", { precision: 10, scale: 2 }).notNull(),
+  tax: numeric("tax", { precision: 10, scale: 2 }).notNull(),
+  total: numeric("total", { precision: 10, scale: 2 }).notNull(),
+  status: varchar("status").notNull().default("confirmed"),
+  createdAt: varchar("created_at").notNull(),
+});
+
+export const orderInsertSchema = createInsertSchema(ordersTable).omit({ id: true });
+export type InsertOrder = z.infer<typeof orderInsertSchema>;
