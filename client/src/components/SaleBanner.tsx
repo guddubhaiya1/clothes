@@ -1,6 +1,6 @@
 export function SaleBanner() {
   return (
-    <div className="w-full relative overflow-hidden sticky top-16 z-40 bg-red-600 dark:bg-red-700 py-2 shadow-xl">
+    <div className="w-full relative overflow-hidden sticky top-16 z-40 bg-red-600 dark:bg-red-700 py-4 md:py-6 shadow-xl">
       {/* Animated top accent line */}
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-yellow-300 via-orange-400 to-yellow-300 opacity-80 animate-light-sweep" />
       
@@ -8,7 +8,7 @@ export function SaleBanner() {
       <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-yellow-400 via-orange-300 to-yellow-400 opacity-80 animate-light-sweep-reverse" />
       
       {/* Scrolling content container */}
-      <div className="relative px-4 py-2 overflow-hidden">
+      <div className="relative px-4 overflow-hidden">
         <div className="flex items-center gap-8 animate-scroll-horizontal whitespace-nowrap">
           {/* Repeat the message multiple times for seamless scrolling */}
           {[0, 1, 2, 3, 4].map((i) => (
