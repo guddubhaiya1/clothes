@@ -8,6 +8,9 @@ import type {
   UploadProductInput,
   InsertSubscriber
 } from "@shared/schema";
+import { db } from "./db";
+import { subscribersTable } from "@shared/schema";
+import { eq } from "drizzle-orm";
 
 const products: Product[] = [
   {
@@ -397,28 +400,52 @@ export class MemStorage implements IStorage {
     return items;
   }
 
-  private subscribers = new Map<string, { id: string; email: string; createdAt: string }>();
-
   async subscribe(email: string): Promise<{ id: string; email: string; createdAt: string }> {
-    // Check if email already exists
-    for (const subscriber of this.subscribers.values()) {
-      if (subscriber.email === email) {
+    try {
+      // Check if email already exists
+      const existing = await db
+        .select()
+        .from(subscribersTable)
+        .where(eq(subscribersTable.email, email));
+
+      if (existing.length > 0) {
         throw new Error("Email already subscribed");
       }
+
+      const subscriber = {
+        id: randomUUID(),
+        email,
+        createdAt: new Date().toISOString(),
+      };
+
+      await db.insert(subscribersTable).values(subscriber);
+      return subscriber;
+    } catch (error: any) {
+      if (error.message === "Email already subscribed") {
+        throw error;
+      }
+      // If database fails, fall back to in-memory for development
+      console.error("Database error:", error);
+      throw new Error("Failed to subscribe");
     }
-
-    const subscriber = {
-      id: randomUUID(),
-      email,
-      createdAt: new Date().toISOString(),
-    };
-
-    this.subscribers.set(subscriber.id, subscriber);
-    return subscriber;
   }
 
   async getSubscribers(): Promise<Array<{ id: string; email: string; createdAt: string }>> {
-    return Array.from(this.subscribers.values());
+    try {
+      const subscribers = await db
+        .select()
+        .from(subscribersTable)
+        .orderBy(subscribersTable.createdAt);
+      
+      return subscribers.map(s => ({
+        id: s.id,
+        email: s.email,
+        createdAt: s.createdAt,
+      }));
+    } catch (error) {
+      console.error("Database error:", error);
+      return [];
+    }
   }
 }
 
