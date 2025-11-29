@@ -9,7 +9,7 @@ import type {
   InsertSubscriber
 } from "@shared/schema";
 import { db } from "./db";
-import { subscribersTable } from "@shared/schema";
+import { subscribersTable, ordersTable } from "@shared/schema";
 import { eq } from "drizzle-orm";
 
 const products: Product[] = [
