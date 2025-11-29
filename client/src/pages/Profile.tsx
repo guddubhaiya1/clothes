@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { LogOut, User as UserIcon } from "lucide-react";
+import { LogOut, User as UserIcon, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -119,6 +119,15 @@ export default function Profile() {
         <Card className="p-6 md:p-8">
           <h3 className="text-lg font-semibold mb-4 text-foreground">Account Actions</h3>
           <div className="space-y-3">
+            <Button
+              variant="secondary"
+              className="w-full gap-2"
+              onClick={() => setLocation("/orders")}
+              data-testid="button-view-order-history"
+            >
+              <Package className="w-4 h-4" />
+              Order History
+            </Button>
             <Button
               variant="secondary"
               className="w-full gap-2"
