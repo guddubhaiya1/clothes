@@ -1,8 +1,8 @@
-# CodeDrip E-Commerce Platform
+# DebugWear E-Commerce Platform
 
 ## Overview
 
-CodeDrip is a premium e-commerce platform specializing in developer and professional apparel. The platform features clever wordplay-based designs targeting developers, medical professionals, engineers, and designers. Built with a modern tech stack, it emphasizes a futuristic, tech-forward aesthetic with premium streetwear sensibilities.
+DebugWear is a premium e-commerce platform specializing in developer and professional apparel. The platform features clever wordplay-based designs targeting developers, medical professionals, engineers, and designers. Built with a modern tech stack, it emphasizes a futuristic, tech-forward aesthetic with premium streetwear sensibilities.
 
 ## User Preferences
 

@@ -51,7 +51,7 @@ export function BrandStory() {
 
             <div className="space-y-4 text-muted-foreground">
               <p>
-                CodeDrip was born from a simple observation: professionals who spend 
+                DebugWear was born from a simple observation: professionals who spend 
                 their days solving complex problems deserve apparel that's just as thoughtful.
               </p>
               <p>

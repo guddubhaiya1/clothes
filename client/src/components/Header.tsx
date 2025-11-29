@@ -121,7 +121,7 @@ export function Header() {
               >
                 <span className="font-mono text-xl md:text-2xl font-bold tracking-tight">
                   <span className="text-primary">{"<"}</span>
-                  <span className="gradient-text">CodeDrip</span>
+                  <span className="gradient-text">DebugWear</span>
                   <span className="text-primary">{"/>"}</span>
                 </span>
               </motion.div>

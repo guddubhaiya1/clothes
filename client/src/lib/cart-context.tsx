@@ -21,7 +21,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>(() => {
     if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("codedrip-cart");
+      const stored = localStorage.getItem("debugwear-cart");
       if (stored) {
         try {
           return JSON.parse(stored);
@@ -66,7 +66,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           // User is not logged in
           if (lastUserIdRef.current !== null) {
             // User just logged out - save current items to localStorage
-            localStorage.setItem("codedrip-cart", JSON.stringify(items));
+            localStorage.setItem("debugwear-cart", JSON.stringify(items));
             lastUserIdRef.current = null;
           }
           setUser(null);

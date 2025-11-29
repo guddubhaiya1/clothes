@@ -46,7 +46,7 @@ export function Footer() {
     if (email) {
       toast({
         title: "Subscribed!",
-        description: "Welcome to the CodeDrip community. Expect great things.",
+        description: "Welcome to the DebugWear community. Expect great things.",
       });
       setEmail("");
     }
@@ -65,7 +65,7 @@ export function Footer() {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-2xl md:text-3xl font-bold mb-3">
-                Join the <span className="gradient-text">CodeDrip</span> Community
+                Join the <span className="gradient-text">DebugWear</span> Community
               </h3>
               <p className="text-muted-foreground">
                 Get early access to new drops, exclusive discounts, and the best developer humor
@@ -117,7 +117,7 @@ export function Footer() {
             <Link href="/">
               <span className="font-mono text-xl font-bold tracking-tight cursor-pointer">
                 <span className="text-primary">{"<"}</span>
-                <span className="gradient-text">CodeDrip</span>
+                <span className="gradient-text">DebugWear</span>
                 <span className="text-primary">{"/>"}</span>
               </span>
             </Link>

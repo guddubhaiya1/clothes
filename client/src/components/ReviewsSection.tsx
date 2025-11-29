@@ -26,13 +26,13 @@ const reviews: Review[] = [
     id: "3",
     name: "Arjun Patel",
     rating: 5,
-    text: "CodeDrip's hoodie collection is insane. The comfort and design are unmatched. This is now my go-to brand for tech wear.",
+    text: "DebugWear's hoodie collection is insane. The comfort and design are unmatched. This is now my go-to brand for tech wear.",
   },
   {
     id: "4",
     name: "Ananya Sharma",
     rating: 5,
-    text: "As a doctor, the medical-themed apparel from CodeDrip is hilarious and relatable. Perfect gift for my medical school friends!",
+    text: "As a doctor, the medical-themed apparel from DebugWear is hilarious and relatable. Perfect gift for my medical school friends!",
   },
   {
     id: "5",
@@ -44,7 +44,7 @@ const reviews: Review[] = [
     id: "6",
     name: "Deepika Nair",
     rating: 5,
-    text: "CodeDrip > every other apparel brand. The attention to detail and the sarcastic taglines are exactly what I need in my wardrobe.",
+    text: "DebugWear > every other apparel brand. The attention to detail and the sarcastic taglines are exactly what I need in my wardrobe.",
   },
   {
     id: "7",
@@ -56,7 +56,7 @@ const reviews: Review[] = [
     id: "8",
     name: "Neha Kapoor",
     rating: 5,
-    text: "As a designer, I appreciate the aesthetic of CodeDrip's designs. They're bold, clever, and genuinely make a statement.",
+    text: "As a designer, I appreciate the aesthetic of DebugWear's designs. They're bold, clever, and genuinely make a statement.",
   },
   {
     id: "9",
@@ -68,7 +68,7 @@ const reviews: Review[] = [
     id: "10",
     name: "Sanya Malhotra",
     rating: 5,
-    text: "CodeDrip's collection celebrates tech culture in a way I've never seen before. Every piece tells a story. Highly recommend!",
+    text: "DebugWear's collection celebrates tech culture in a way I've never seen before. Every piece tells a story. Highly recommend!",
   },
 ];
 
