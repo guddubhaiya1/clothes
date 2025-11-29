@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import passport from "passport";
 import { storage } from "./storage";
-import { addToCartSchema, orderInfoSchema, uploadProductSchema } from "@shared/schema";
+import { addToCartSchema, orderInfoSchema, uploadProductSchema, subscriberInsertSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(
@@ -281,6 +281,36 @@ export async function registerRoutes(
       res.json({ successCount, failureCount, total: products.length });
     } catch (error) {
       res.status(500).json({ error: "Failed to process bulk upload" });
+    }
+  });
+
+  // ============== SUBSCRIBER ROUTES ==============
+
+  // Subscribe to newsletter
+  app.post("/api/subscribe", async (req, res) => {
+    try {
+      const result = subscriberInsertSchema.safeParse(req.body);
+      if (!result.success) {
+        return res.status(400).json({ error: "Invalid email", details: result.error.issues });
+      }
+
+      const subscriber = await storage.subscribe(result.data.email);
+      res.status(201).json(subscriber);
+    } catch (error: any) {
+      if (error.message === "Email already subscribed") {
+        return res.status(409).json({ error: "Email already subscribed" });
+      }
+      res.status(500).json({ error: "Failed to subscribe" });
+    }
+  });
+
+  // Get all subscribers (admin)
+  app.get("/api/subscribers", async (req, res) => {
+    try {
+      const subscribers = await storage.getSubscribers();
+      res.json(subscribers);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch subscribers" });
     }
   });
 

@@ -396,6 +396,30 @@ export class MemStorage implements IStorage {
     this.userCarts.set(userId, items);
     return items;
   }
+
+  private subscribers = new Map<string, { id: string; email: string; createdAt: string }>();
+
+  async subscribe(email: string): Promise<{ id: string; email: string; createdAt: string }> {
+    // Check if email already exists
+    for (const subscriber of this.subscribers.values()) {
+      if (subscriber.email === email) {
+        throw new Error("Email already subscribed");
+      }
+    }
+
+    const subscriber = {
+      id: randomUUID(),
+      email,
+      createdAt: new Date().toISOString(),
+    };
+
+    this.subscribers.set(subscriber.id, subscriber);
+    return subscriber;
+  }
+
+  async getSubscribers(): Promise<Array<{ id: string; email: string; createdAt: string }>> {
+    return Array.from(this.subscribers.values());
+  }
 }
 
 export const storage = new MemStorage();
