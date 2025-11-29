@@ -497,55 +497,62 @@ export default function Checkout() {
               {currentStep === 2 && (
                 <div className="space-y-6">
                   <div>
-                    <h2 className="text-xl font-semibold mb-1">Payment</h2>
+                    <h2 className="text-xl font-semibold mb-1">Payment Method</h2>
                     <p className="text-sm text-muted-foreground font-mono">
-                      // Secure checkout powered by Stripe
+                      // Cash on Delivery
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-lg bg-muted/50 border border-border">
+                  <div className="p-6 rounded-lg bg-accent/5 border border-accent/30">
                     <div className="flex items-center gap-3 mb-4">
-                      <Lock className="h-5 w-5 text-accent" />
+                      <Check className="h-5 w-5 text-accent" />
                       <span className="text-sm font-medium">
-                        Demo Mode — No real payment will be processed
+                        Cash on Delivery Selected
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      This is a demo checkout. Click "Place Order" to simulate a successful
-                      purchase. In production, this would integrate with Stripe for secure
-                      payment processing.
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Pay for your order when it arrives at your doorstep. Our delivery partner will collect the payment upon delivery.
                     </p>
+                    <ul className="text-sm text-muted-foreground space-y-2">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent">•</span>
+                        <span>No need to enter card details</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent">•</span>
+                        <span>Pay securely when your order is delivered</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent">•</span>
+                        <span>Estimated delivery: 3-5 business days</span>
+                      </li>
+                    </ul>
                   </div>
 
-                  {/* Mock Card Form */}
-                  <div className="space-y-4">
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Card Number</label>
-                      <Input
-                        placeholder="4242 4242 4242 4242"
-                        defaultValue="4242 4242 4242 4242"
-                        disabled
-                        data-testid="input-card-number"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Expiry</label>
-                        <Input
-                          placeholder="12/25"
-                          defaultValue="12/25"
-                          disabled
-                          data-testid="input-expiry"
-                        />
+                  <div className="p-4 rounded-lg bg-muted/30 border border-border">
+                    <h3 className="text-sm font-semibold mb-3">Order Summary for Delivery</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Subtotal</span>
+                        <span>${subtotal.toFixed(2)}</span>
                       </div>
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">CVC</label>
-                        <Input
-                          placeholder="123"
-                          defaultValue="123"
-                          disabled
-                          data-testid="input-cvc"
-                        />
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Shipping</span>
+                        <span>
+                          {shipping === 0 ? (
+                            <span className="text-accent">Free</span>
+                          ) : (
+                            `$${shipping.toFixed(2)}`
+                          )}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Tax</span>
+                        <span>${tax.toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between pt-2 border-t border-border text-base font-semibold">
+                        <span>Total Amount Due</span>
+                        <span className="text-accent">${total.toFixed(2)}</span>
                       </div>
                     </div>
                   </div>
@@ -580,8 +587,8 @@ export default function Checkout() {
                         </>
                       ) : (
                         <>
-                          <Lock className="mr-2 h-4 w-4" />
-                          Place Order — ${total.toFixed(2)}
+                          <Check className="mr-2 h-4 w-4" />
+                          Confirm Order — ${total.toFixed(2)}
                         </>
                       )}
                     </Button>
