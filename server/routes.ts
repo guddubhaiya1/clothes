@@ -315,6 +315,60 @@ export async function registerRoutes(
     }
   });
 
+  // ============== BULK ORDER ROUTES ==============
+
+  // Create bulk order inquiry
+  app.post("/api/bulk-orders", async (req, res) => {
+    try {
+      const { organizationName, contactPerson, email, phone, estimatedQuantity, productInterests, message } = req.body;
+
+      // Validate using zod schema
+      const validationResult = bulkOrderSchema.safeParse({
+        organizationName,
+        contactPerson,
+        email,
+        phone,
+        estimatedQuantity,
+        productInterests,
+        message,
+      });
+
+      if (!validationResult.success) {
+        return res.status(400).json({
+          error: "Invalid bulk order data",
+          details: validationResult.error.issues,
+        });
+      }
+
+      const bulkOrder = await storage.createBulkOrder({
+        organizationName,
+        contactPerson,
+        email,
+        phone,
+        estimatedQuantity,
+        productInterests,
+        message,
+      });
+
+      res.status(201).json(bulkOrder);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create bulk order inquiry" });
+    }
+  });
+
+  // Get all bulk orders (admin only)
+  app.get("/api/bulk-orders", async (req, res) => {
+    try {
+      if (!req.isAuthenticated()) {
+        return res.status(401).json({ error: "Not authenticated" });
+      }
+      const bulkOrders = await storage.getBulkOrders();
+      res.json(bulkOrders);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch bulk orders" });
+    }
+  });
+
   // ============== AUTH ROUTES ==============
 
   // Google OAuth login

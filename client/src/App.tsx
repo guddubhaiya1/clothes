@@ -24,6 +24,7 @@ import ContactUs from "@/pages/ContactUs";
 import ShippingInfo from "@/pages/ShippingInfo";
 import FAQ from "@/pages/FAQ";
 import MeetDeveloper from "@/pages/MeetDeveloper";
+import BulkOrder from "@/pages/BulkOrder";
 import NotFound from "@/pages/not-found";
 
 function ScrollToTop() {
@@ -56,6 +57,7 @@ function Router() {
         <Route path="/shipping" component={ShippingInfo} />
         <Route path="/faq" component={FAQ} />
         <Route path="/developer" component={MeetDeveloper} />
+        <Route path="/bulk-order" component={BulkOrder} />
         <Route component={NotFound} />
       </Switch>
     </>

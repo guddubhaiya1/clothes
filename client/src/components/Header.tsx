@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { ShoppingBag, Menu, X, Sun, Moon, Search, LogIn, User as UserIcon } from "lucide-react";
+import { ShoppingBag, Menu, X, Sun, Moon, Search, LogIn, User as UserIcon, Briefcase } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,7 @@ const navLinks = [
   { href: "/shop?category=developer", label: "Developer" },
   { href: "/shop?category=medical", label: "Medical" },
   { href: "/shop?category=engineering", label: "Engineering" },
+  { href: "/bulk-order", label: "Bulk Orders", icon: true },
 ];
 
 export function Header() {
