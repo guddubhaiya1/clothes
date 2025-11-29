@@ -7,7 +7,7 @@ export default function Careers() {
     {
       id: 1,
       title: "Internship - Backend Development",
-      description: "Join our team and contribute to CodeDrip's backend infrastructure. Work with modern tech stack, mentor with experienced developers, and grow your skills in a fast-paced environment.",
+      description: "Join our team and contribute to DebugWear's backend infrastructure. Work with modern tech stack, mentor with experienced developers, and grow your skills in a fast-paced environment.",
       responsibilities: [
         "Develop and maintain backend APIs",
         "Work with PostgreSQL database optimization",
@@ -24,7 +24,7 @@ export default function Careers() {
     {
       id: 2,
       title: "Senior Backend Developer",
-      description: "Lead our backend team and shape the technical direction of CodeDrip. We're looking for an experienced backend engineer who thrives in fast-paced environments and is passionate about building scalable systems.",
+      description: "Lead our backend team and shape the technical direction of DebugWear. We're looking for an experienced backend engineer who thrives in fast-paced environments and is passionate about building scalable systems.",
       responsibilities: [
         "Design and implement scalable backend systems",
         "Lead technical decisions and architecture planning",
@@ -47,7 +47,7 @@ export default function Careers() {
       {/* Header */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-card">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Join the CodeDrip Team</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Join the DebugWear Team</h1>
           <p className="text-lg text-muted-foreground">
             We're building something special and we want you to be part of it. If you're passionate about creating amazing products and love working with talented people, we'd love to hear from you.
           </p>
@@ -57,7 +57,7 @@ export default function Careers() {
       {/* Why Work With Us */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold mb-8">Why CodeDrip?</h2>
+          <h2 className="text-3xl font-bold mb-8">Why DebugWear?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="p-6">
               <h3 className="text-xl font-bold mb-3">Meaningful Work</h3>
@@ -123,7 +123,7 @@ export default function Careers() {
                 </div>
 
                 <div className="flex gap-4">
-                  <a href="mailto:siddharthsekhar1111@gmail.com?subject=Application for CodeDrip - {position.title}">
+                  <a href="mailto:siddharthsekhar1111@gmail.com?subject=Application for DebugWear - {position.title}">
                     <Button variant="default">
                       <Mail className="w-4 h-4 mr-2" />
                       Apply Now
@@ -142,7 +142,7 @@ export default function Careers() {
         <p className="text-lg text-muted-foreground mb-6">
           We're always looking for talented people. Send us your resume or portfolio!
         </p>
-        <a href="mailto:siddharthsekhar1111@gmail.com?subject=Inquiry for CodeDrip">
+        <a href="mailto:siddharthsekhar1111@gmail.com?subject=Inquiry for DebugWear">
           <Button variant="outline">Get in Touch</Button>
         </a>
       </section>

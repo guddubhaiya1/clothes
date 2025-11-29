@@ -117,9 +117,9 @@ export default function FAQ() {
       category: "General",
       items: [
         {
-          question: "What is CodeDrip all about?",
+          question: "What is DebugWear all about?",
           answer:
-            "CodeDrip celebrates professionals across industries with clever wordplay and premium apparel. We make products for developers, medical professionals, engineers, designers, and more. It's about celebrating your craft with pride and humor.",
+            "DebugWear celebrates professionals across industries with clever wordplay and premium apparel. We make products for developers, medical professionals, engineers, designers, and more. It's about celebrating your craft with pride and humor.",
         },
         {
           question: "Can I suggest design ideas?",
@@ -147,7 +147,7 @@ export default function FAQ() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
           <p className="text-lg text-muted-foreground">
-            Find answers to common questions about CodeDrip, our products, shipping, and more.
+            Find answers to common questions about DebugWear, our products, shipping, and more.
           </p>
         </div>
       </section>

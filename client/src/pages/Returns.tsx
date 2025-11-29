@@ -9,7 +9,7 @@ export default function Returns() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Return Policy</h1>
           <p className="text-lg text-muted-foreground">
-            At CodeDrip, we stand behind our quality. Here's what you need to know.
+            At DebugWear, we stand behind our quality. Here's what you need to know.
           </p>
         </div>
       </section>
@@ -23,7 +23,7 @@ export default function Returns() {
               <div>
                 <h2 className="text-2xl font-bold mb-2">No Returns Policy</h2>
                 <p className="text-muted-foreground">
-                  We do not accept returns or exchanges on any CodeDrip products.
+                  We do not accept returns or exchanges on any DebugWear products.
                 </p>
               </div>
             </div>
@@ -33,7 +33,7 @@ export default function Returns() {
             <div>
               <h3 className="text-xl font-bold mb-4">Why No Returns?</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                At CodeDrip, we believe in radical transparency and quality assurance. Every product is carefully crafted and quality-checked before it ships to you. We put in the work upfront so you don't have to worry about quality issues.
+                At DebugWear, we believe in radical transparency and quality assurance. Every product is carefully crafted and quality-checked before it ships to you. We put in the work upfront so you don't have to worry about quality issues.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 However, we understand that sometimes things happen. That's why we have processes to ensure you get exactly what you ordered.
@@ -88,7 +88,7 @@ export default function Returns() {
             <div>
               <h3 className="text-xl font-bold mb-4">Our Commitment to You</h3>
               <p className="text-muted-foreground leading-relaxed">
-                While we don't accept standard returns, we're committed to your satisfaction. Every CodeDrip product is made with premium materials and attention to detail. We believe in what we make, and we stand behind it.
+                While we don't accept standard returns, we're committed to your satisfaction. Every DebugWear product is made with premium materials and attention to detail. We believe in what we make, and we stand behind it.
               </p>
             </div>
 

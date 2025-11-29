@@ -27,7 +27,7 @@ export default function Login() {
           <div className="flex justify-center mb-4">
             <Zap className="w-12 h-12 text-primary" />
           </div>
-          <h1 className="text-3xl font-bold mb-2">Sign In to CodeDrip</h1>
+          <h1 className="text-3xl font-bold mb-2">Sign In to DebugWear</h1>
           <p className="text-muted-foreground">
             Join the developer community and save your orders
           </p>

@@ -13,7 +13,7 @@ const ThemeProviderContext = createContext<ThemeProviderContextType | undefined>
 export function ThemeProvider({
   children,
   defaultTheme = "dark",
-  storageKey = "codedrip-theme",
+  storageKey = "debugwear-theme",
 }: {
   children: React.ReactNode;
   defaultTheme?: Theme;

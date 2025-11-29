@@ -11,7 +11,7 @@ export default function MeetDeveloper() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Meet the Developer</h1>
           <p className="text-lg text-muted-foreground">
-            The mind and hands behind CodeDrip. Learn about the journey, passion, and mission.
+            The mind and hands behind DebugWear. Learn about the journey, passion, and mission.
           </p>
         </div>
       </section>
@@ -39,10 +39,10 @@ export default function MeetDeveloper() {
                   Founder & Full-Stack Developer
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Hi! I'm Siddharth, the creator of CodeDrip. I started this journey with a simple observation: professionals across every field deserve apparel that celebrates their work with authenticity and humor.
+                  Hi! I'm Siddharth, the creator of DebugWear. I started this journey with a simple observation: professionals across every field deserve apparel that celebrates their work with authenticity and humor.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  As a full-stack developer, I've always believed in the power of good design meeting functionality. CodeDrip is my attempt to bring that philosophy to real-world products that our community actually wants to wear.
+                  As a full-stack developer, I've always believed in the power of good design meeting functionality. DebugWear is my attempt to bring that philosophy to real-world products that our community actually wants to wear.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   When I'm not building features or dreaming up new designs, you'll find me diving deep into new technologies, contributing to open-source projects, or brainstorming the next clever tagline that'll make you smile.
@@ -53,13 +53,13 @@ export default function MeetDeveloper() {
 
           {/* Story Section */}
           <div className="mt-16">
-            <h2 className="text-3xl font-bold mb-8">The CodeDrip Story</h2>
+            <h2 className="text-3xl font-bold mb-8">The DebugWear Story</h2>
 
             <div className="space-y-8">
               <Card className="p-8">
                 <h3 className="text-2xl font-bold mb-4">The Spark</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  CodeDrip began as a personal passion project. I noticed something: developers, doctors, engineers, and designers spend years mastering their craft, but there wasn't apparel that genuinely celebrated their work with authenticity and a touch of humor. The options were generic, mass-produced, and uninspired.
+                  DebugWear began as a personal passion project. I noticed something: developers, doctors, engineers, and designers spend years mastering their craft, but there wasn't apparel that genuinely celebrated their work with authenticity and a touch of humor. The options were generic, mass-produced, and uninspired.
                 </p>
               </Card>
 
@@ -73,14 +73,14 @@ export default function MeetDeveloper() {
               <Card className="p-8">
                 <h3 className="text-2xl font-bold mb-4">The Mission</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Today, CodeDrip is about building a community. A place where your work is celebrated, where the grind is acknowledged, where late nights and breakthroughs are honored. We're not just selling apparel—we're creating a movement of professionals who aren't afraid to wear their passion on their sleeve.
+                  Today, DebugWear is about building a community. A place where your work is celebrated, where the grind is acknowledged, where late nights and breakthroughs are honored. We're not just selling apparel—we're creating a movement of professionals who aren't afraid to wear their passion on their sleeve.
                 </p>
               </Card>
 
               <Card className="p-8">
                 <h3 className="text-2xl font-bold mb-4">The Future</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  We're just getting started. With your support, CodeDrip will expand to more professions, new product categories, and even better designs. We're listening to our community and building with your feedback. The best is yet to come.
+                  We're just getting started. With your support, DebugWear will expand to more professions, new product categories, and even better designs. We're listening to our community and building with your feedback. The best is yet to come.
                 </p>
               </Card>
             </div>
@@ -141,7 +141,7 @@ export default function MeetDeveloper() {
           <Card className="p-8 mt-16 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
             <h3 className="text-2xl font-bold mb-4 text-center">My Philosophy</h3>
             <p className="text-muted-foreground text-center text-lg leading-relaxed italic">
-              "Your work matters. The problems you solve, the lives you touch, the creations you build—they all deserve recognition. CodeDrip exists to celebrate that. To remind you why you do what you do, even on the hard days. And to connect you with a community of people who get it."
+              "Your work matters. The problems you solve, the lives you touch, the creations you build—they all deserve recognition. DebugWear exists to celebrate that. To remind you why you do what you do, even on the hard days. And to connect you with a community of people who get it."
             </p>
             <p className="text-muted-foreground text-center mt-6 font-semibold">
               — Siddharth

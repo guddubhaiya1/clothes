@@ -23,7 +23,7 @@ export default function ShippingInfo() {
               <div>
                 <h2 className="text-3xl font-bold mb-2">We Ship via Delhivery</h2>
                 <p className="text-muted-foreground text-lg">
-                  We partner with Delhivery, India's most reliable logistics network, to ensure your CodeDrip products reach you safely and on time.
+                  We partner with Delhivery, India's most reliable logistics network, to ensure your DebugWear products reach you safely and on time.
                 </p>
               </div>
             </div>
@@ -111,7 +111,7 @@ export default function ShippingInfo() {
           <Card className="p-8 bg-card">
             <h2 className="text-2xl font-bold mb-6">Safe Packaging</h2>
             <p className="text-muted-foreground mb-4">
-              We take extra care to ensure your CodeDrip apparel arrives in perfect condition:
+              We take extra care to ensure your DebugWear apparel arrives in perfect condition:
             </p>
             <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-start gap-3">
