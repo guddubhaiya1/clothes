@@ -161,7 +161,7 @@ export function Hero() {
             className="flex flex-wrap items-center justify-center gap-8 md:gap-16 pt-8 md:pt-12"
           >
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold font-mono text-primary">10K+</div>
+              <div className="text-2xl md:text-3xl font-bold font-mono text-primary">1.2K</div>
               <div className="text-sm text-muted-foreground">Happy Devs</div>
             </div>
             <div className="text-center">

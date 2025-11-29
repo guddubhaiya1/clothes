@@ -67,7 +67,7 @@ export function BrandStory() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-4">
               <div className="text-center p-4 rounded-lg bg-muted/30">
-                <div className="text-2xl font-bold font-mono text-primary">10K+</div>
+                <div className="text-2xl font-bold font-mono text-primary">1.2K</div>
                 <div className="text-xs text-muted-foreground">Happy Customers</div>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/30">
