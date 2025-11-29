@@ -1,6 +1,6 @@
 export function SaleBanner() {
   return (
-    <div className="w-full relative overflow-hidden sticky top-16 z-40 bg-red-600 dark:bg-red-700 py-2.5 md:py-3.5 shadow-xl">
+    <div className="w-full relative overflow-hidden sticky top-16 z-40 bg-red-600 dark:bg-red-700 py-2.5 md:py-3.5 shadow-xl mt-2 mb-4">
       {/* Animated top accent line */}
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-yellow-300 via-orange-400 to-yellow-300 opacity-80 animate-light-sweep" />
       
