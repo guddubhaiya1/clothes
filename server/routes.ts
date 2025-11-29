@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import passport from "passport";
 import { storage } from "./storage";
-import { addToCartSchema, orderInfoSchema, uploadProductSchema, subscriberInsertSchema } from "@shared/schema";
+import { addToCartSchema, orderInfoSchema, uploadProductSchema, subscriberInsertSchema, bulkOrderSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(

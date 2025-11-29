@@ -9,7 +9,7 @@ import type {
   InsertSubscriber
 } from "@shared/schema";
 import { db } from "./db";
-import { subscribersTable, ordersTable } from "@shared/schema";
+import { subscribersTable, ordersTable, bulkOrdersTable } from "@shared/schema";
 import { eq } from "drizzle-orm";
 
 const products: Product[] = [
@@ -475,6 +475,56 @@ export class MemStorage implements IStorage {
         email: s.email,
         createdAt: s.createdAt,
       }));
+    } catch (error) {
+      console.error("Database error:", error);
+      return [];
+    }
+  }
+
+  async createBulkOrder(bulkOrderData: {
+    organizationName: string;
+    contactPerson: string;
+    email: string;
+    phone: string;
+    estimatedQuantity: string;
+    productInterests: string;
+    message?: string;
+  }): Promise<{ id: string; email: string; organizationName: string; createdAt: string }> {
+    const bulkOrderId = `BO-${Date.now().toString(36).toUpperCase()}`;
+    const createdAt = new Date().toISOString();
+
+    try {
+      await db.insert(bulkOrdersTable).values({
+        id: bulkOrderId,
+        organizationName: bulkOrderData.organizationName,
+        contactPerson: bulkOrderData.contactPerson,
+        email: bulkOrderData.email,
+        phone: bulkOrderData.phone,
+        estimatedQuantity: bulkOrderData.estimatedQuantity,
+        productInterests: bulkOrderData.productInterests,
+        message: bulkOrderData.message || "",
+        status: "pending",
+        createdAt,
+      });
+    } catch (error) {
+      console.error("Database error saving bulk order:", error);
+    }
+
+    return {
+      id: bulkOrderId,
+      email: bulkOrderData.email,
+      organizationName: bulkOrderData.organizationName,
+      createdAt,
+    };
+  }
+
+  async getBulkOrders(): Promise<any[]> {
+    try {
+      const orders = await db
+        .select()
+        .from(bulkOrdersTable)
+        .orderBy(bulkOrdersTable.createdAt);
+      return orders;
     } catch (error) {
       console.error("Database error:", error);
       return [];

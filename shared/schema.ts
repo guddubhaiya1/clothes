@@ -181,3 +181,30 @@ export const ordersTable = pgTable("orders", {
 
 export const orderInsertSchema = createInsertSchema(ordersTable).omit({ id: true });
 export type InsertOrder = z.infer<typeof orderInsertSchema>;
+
+// Bulk Orders Table - for B2B/organization inquiries
+export const bulkOrdersTable = pgTable("bulk_orders", {
+  id: varchar("id").primaryKey(),
+  organizationName: varchar("organization_name").notNull(),
+  contactPerson: varchar("contact_person").notNull(),
+  email: varchar("email").notNull(),
+  phone: varchar("phone").notNull(),
+  estimatedQuantity: varchar("estimated_quantity").notNull(),
+  productInterests: text("product_interests").notNull(),
+  message: text("message"),
+  status: varchar("status").notNull().default("pending"),
+  createdAt: varchar("created_at").notNull(),
+});
+
+export const bulkOrderInsertSchema = createInsertSchema(bulkOrdersTable).omit({ id: true });
+export type InsertBulkOrder = z.infer<typeof bulkOrderInsertSchema>;
+
+export const bulkOrderSchema = z.object({
+  organizationName: z.string().min(1, "Organization name is required"),
+  contactPerson: z.string().min(1, "Contact person name is required"),
+  email: z.string().email("Please enter a valid email"),
+  phone: z.string().min(10, "Valid phone number required"),
+  estimatedQuantity: z.string().min(1, "Estimated quantity is required"),
+  productInterests: z.string().min(1, "Please select at least one product category"),
+  message: z.string().optional(),
+});
