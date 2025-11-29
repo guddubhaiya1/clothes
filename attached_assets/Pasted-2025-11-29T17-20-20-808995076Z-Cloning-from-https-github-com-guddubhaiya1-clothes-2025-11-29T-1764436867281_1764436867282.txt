@@ -1,0 +1,344 @@
+2025-11-29T17:20:20.808995076Z ==> Cloning from https://github.com/guddubhaiya1/clothes
+2025-11-29T17:20:21.51125709Z ==> Checking out commit af86d21421135e2961dc2c0cb4a426a02f60d612 in branch main
+2025-11-29T17:20:22.895986822Z ==> Using Node.js version 22.16.0 (default)
+2025-11-29T17:20:22.96256793Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2025-11-29T17:20:25.012323775Z ==> Running build command 'npm install && npm run build'...
+2025-11-29T17:20:34.792110531Z 
+2025-11-29T17:20:34.792133461Z > rest-express@1.0.0 postinstall
+2025-11-29T17:20:34.792138571Z > node scripts/setup-stubs.cjs
+2025-11-29T17:20:34.792142002Z 
+2025-11-29T17:20:34.823480043Z ✓ Replit stub packages created
+2025-11-29T17:20:34.836414334Z 
+2025-11-29T17:20:34.836438124Z added 461 packages, and audited 462 packages in 10s
+2025-11-29T17:20:34.836492975Z 
+2025-11-29T17:20:34.836507115Z 64 packages are looking for funding
+2025-11-29T17:20:34.836540876Z   run `npm fund` for details
+2025-11-29T17:20:34.858676517Z 
+2025-11-29T17:20:34.858703437Z 9 vulnerabilities (3 low, 5 moderate, 1 high)
+2025-11-29T17:20:34.858709408Z 
+2025-11-29T17:20:34.858715728Z To address issues that do not require attention, run:
+2025-11-29T17:20:34.858720948Z   npm audit fix
+2025-11-29T17:20:34.858724398Z 
+2025-11-29T17:20:34.858728088Z To address all issues (including breaking changes), run:
+2025-11-29T17:20:34.858732058Z   npm audit fix --force
+2025-11-29T17:20:34.858735698Z 
+2025-11-29T17:20:34.858739818Z Run `npm audit` for details.
+2025-11-29T17:20:35.031745401Z 
+2025-11-29T17:20:35.031768661Z > rest-express@1.0.0 build
+2025-11-29T17:20:35.031774571Z > tsx script/build.ts
+2025-11-29T17:20:35.031778591Z 
+2025-11-29T17:20:35.968625735Z building client...
+2025-11-29T17:20:36.019448004Z vite v5.4.20 building for production...
+2025-11-29T17:20:36.730337548Z transforming...
+2025-11-29T17:20:36.875880393Z ✓ 4 modules transformed.
+2025-11-29T17:20:36.876802317Z x Build failed in 176ms
+2025-11-29T17:20:36.878001407Z [vite:css] [postcss] Cannot find module '@tailwindcss/typography'
+2025-11-29T17:20:36.878016197Z Require stack:
+2025-11-29T17:20:36.878021167Z - /opt/render/project/src/tailwind.config.ts
+2025-11-29T17:20:36.878025717Z file: /opt/render/project/src/client/src/index.css:undefined:NaN
+2025-11-29T17:20:36.878030548Z     at node:internal/modules/cjs/loader:1401:15
+2025-11-29T17:20:36.878035817Z     at nextResolveSimple (/opt/render/project/src/node_modules/tsx/dist/register-D46fvsV_.cjs:4:1004)
+2025-11-29T17:20:36.878038738Z     at /opt/render/project/src/node_modules/tsx/dist/register-D46fvsV_.cjs:3:2630
+2025-11-29T17:20:36.878041638Z     at /opt/render/project/src/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1542
+2025-11-29T17:20:36.878044608Z     at resolveTsPaths (/opt/render/project/src/node_modules/tsx/dist/register-D46fvsV_.cjs:4:760)
+2025-11-29T17:20:36.878047498Z     at /opt/render/project/src/node_modules/tsx/dist/register-D46fvsV_.cjs:4:1102
+2025-11-29T17:20:36.878050498Z     at m._resolveFilename (file:///opt/render/project/src/node_modules/tsx/dist/register-B7jrtLTO.mjs:1:789)
+2025-11-29T17:20:36.878053328Z     at Function.resolve (node:internal/modules/helpers:145:19)
+2025-11-29T17:20:36.878064758Z     at _resolve (/opt/render/project/src/node_modules/jiti/dist/jiti.js:1:241814)
+2025-11-29T17:20:36.878066738Z     at jiti (/opt/render/project/src/node_modules/jiti/dist/jiti.js:1:244531) {
+2025-11-29T17:20:36.878068508Z   code: 'PLUGIN_ERROR',
+2025-11-29T17:20:36.878070248Z   requireStack: [ '/opt/render/project/src/tailwind.config.ts' ],
+2025-11-29T17:20:36.878072008Z   loc: { file: undefined, line: undefined, column: NaN },
+2025-11-29T17:20:36.878073658Z   pluginCode: '@tailwind base;\n' +
+2025-11-29T17:20:36.878075408Z     '@tailwind components;\n' +
+2025-11-29T17:20:36.878077118Z     '@tailwind utilities;\n' +
+2025-11-29T17:20:36.878078818Z     '\n' +
+2025-11-29T17:20:36.878080548Z     '/* LIGHT MODE - Futuristic Premium Theme */\n' +
+2025-11-29T17:20:36.878082198Z     ':root {\n' +
+2025-11-29T17:20:36.878083888Z     '  --button-outline: rgba(0,0,0, .10);\n' +
+2025-11-29T17:20:36.878085528Z     '  --badge-outline: rgba(0,0,0, .05);\n' +
+2025-11-29T17:20:36.878087248Z     '  --opaque-button-border-intensity: -8;\n' +
+2025-11-29T17:20:36.878088898Z     '  --elevate-1: rgba(0,0,0, .03);\n' +
+2025-11-29T17:20:36.878090778Z     '  --elevate-2: rgba(0,0,0, .08);\n' +
+2025-11-29T17:20:36.878092549Z     '  --background: 220 20% 97%;\n' +
+2025-11-29T17:20:36.878094229Z     '  --foreground: 220 25% 10%;\n' +
+2025-11-29T17:20:36.878095889Z     '  --border: 220 15% 88%;\n' +
+2025-11-29T17:20:36.878097578Z     '  --card: 220 20% 99%;\n' +
+2025-11-29T17:20:36.878099238Z     '  --card-foreground: 220 25% 12%;\n' +
+2025-11-29T17:20:36.878101909Z     '  --card-border: 220 15% 92%;\n' +
+2025-11-29T17:20:36.878105159Z     '  --sidebar: 220 20% 95%;\n' +
+2025-11-29T17:20:36.878107709Z     '  --sidebar-foreground: 220 25% 14%;\n' +
+2025-11-29T17:20:36.878110319Z     '  --sidebar-border: 220 15% 88%;\n' +
+2025-11-29T17:20:36.878113059Z     '  --sidebar-primary: 265 85% 55%;\n' +
+2025-11-29T17:20:36.878115939Z     '  --sidebar-primary-foreground: 0 0% 100%;\n' +
+2025-11-29T17:20:36.878118509Z     '  --sidebar-accent: 220 15% 90%;\n' +
+2025-11-29T17:20:36.878121289Z     '  --sidebar-accent-foreground: 220 25% 18%;\n' +
+2025-11-29T17:20:36.878123849Z     '  --sidebar-ring: 265 85% 55%;\n' +
+2025-11-29T17:20:36.878126329Z     '  --popover: 220 20% 98%;\n' +
+2025-11-29T17:20:36.878128629Z     '  --popover-foreground: 220 25% 15%;\n' +
+2025-11-29T17:20:36.878131109Z     '  --popover-border: 220 15% 90%;\n' +
+2025-11-29T17:20:36.878133459Z     '  --primary: 265 85% 55%;\n' +
+2025-11-29T17:20:36.878135839Z     '  --primary-foreground: 0 0% 100%;\n' +
+2025-11-29T17:20:36.878138139Z     '  --secondary: 220 15% 92%;\n' +
+2025-11-29T17:20:36.878140669Z     '  --secondary-foreground: 220 25% 18%;\n' +
+2025-11-29T17:20:36.878143179Z     '  --muted: 220 15% 94%;\n' +
+2025-11-29T17:20:36.878145899Z     '  --muted-foreground: 220 15% 45%;\n' +
+2025-11-29T17:20:36.878148819Z     '  --accent: 185 75% 45%;\n' +
+2025-11-29T17:20:36.87815329Z     '  --accent-foreground: 0 0% 100%;\n' +
+2025-11-29T17:20:36.87815507Z     '  --destructive: 0 72% 51%;\n' +
+2025-11-29T17:20:36.878156739Z     '  --destructive-foreground: 0 0% 98%;\n' +
+2025-11-29T17:20:36.878158399Z     '  --input: 220 15% 26%;\n' +
+2025-11-29T17:20:36.87817726Z     '  --ring: 265 85% 55%;\n' +
+2025-11-29T17:20:36.87818396Z     '  --chart-1: 265 85% 55%;\n' +
+2025-11-29T17:20:36.87818586Z     '  --chart-2: 185 75% 45%;\n' +
+2025-11-29T17:20:36.87818755Z     '  --chart-3: 330 85% 60%;\n' +
+2025-11-29T17:20:36.87818933Z     '  --chart-4: 45 95% 55%;\n' +
+2025-11-29T17:20:36.87819105Z     '  --chart-5: 150 75% 45%;\n' +
+2025-11-29T17:20:36.87819687Z     '  --neon-cyan: 185 100% 50%;\n' +
+2025-11-29T17:20:36.87819865Z     '  --neon-purple: 265 100% 65%;\n' +
+2025-11-29T17:20:36.8782004Z     '  --neon-pink: 330 100% 65%;\n' +
+2025-11-29T17:20:36.87820212Z     '  --neon-green: 150 100% 45%;\n' +
+2025-11-29T17:20:36.87820392Z     '  --font-sans: "Space Grotesk", system-ui, sans-serif;\n' +
+2025-11-29T17:20:36.87820577Z     '  --font-serif: Georgia, serif;\n' +
+2025-11-29T17:20:36.87820744Z     '  --font-mono: "JetBrains Mono", Menlo, monospace;\n' +
+2025-11-29T17:20:36.87820916Z     '  --radius: .5rem;\n' +
+2025-11-29T17:20:36.87821086Z     '  --shadow-2xs: 0px 2px 0px 0px hsl(220 20% 10% / 0.00);\n' +
+2025-11-29T17:20:36.8782126Z     '  --shadow-xs: 0px 2px 0px 0px hsl(220 20% 10% / 0.00);\n' +
+2025-11-29T17:20:36.8782144Z     '  --shadow-sm: 0px 2px 4px 0px hsl(220 20% 10% / 0.04), 0px 1px 2px -1px hsl(220 20% 10% / 0.02);\n' +
+2025-11-29T17:20:36.878216211Z     '  --shadow: 0px 4px 8px 0px hsl(220 20% 10% / 0.06), 0px 2px 4px -1px hsl(220 20% 10% / 0.03);\n' +
+2025-11-29T17:20:36.878217951Z     '  --shadow-md: 0px 6px 16px 0px hsl(220 20% 10% / 0.08), 0px 3px 6px -1px hsl(220 20% 10% / 0.04);\n' +
+2025-11-29T17:20:36.878219691Z     '  --shadow-lg: 0px 12px 24px 0px hsl(220 20% 10% / 0.10), 0px 6px 12px -1px hsl(220 20% 10% / 0.05);\n' +
+2025-11-29T17:20:36.8782214Z     '  --shadow-xl: 0px 20px 40px 0px hsl(220 20% 10% / 0.12), 0px 10px 20px -1px hsl(220 20% 10% / 0.06);\n' +
+2025-11-29T17:20:36.878223121Z     '  --shadow-2xl: 0px 32px 64px 0px hsl(220 20% 10% / 0.14);\n' +
+2025-11-29T17:20:36.878224891Z     '  --tracking-normal: 0em;\n' +
+2025-11-29T17:20:36.878235201Z     '  --spacing: 0.25rem;\n' +
+2025-11-29T17:20:36.878237151Z     '\n' +
+2025-11-29T17:20:36.878238881Z     '  --sidebar-primary-border: hsl(var(--sidebar-primary));\n' +
+2025-11-29T17:20:36.878240691Z     '  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878242511Z     '  --sidebar-accent-border: hsl(var(--sidebar-accent));\n' +
+2025-11-29T17:20:36.878244191Z     '  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878245881Z     '  --primary-border: hsl(var(--primary));\n' +
+2025-11-29T17:20:36.878247551Z     '  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878249211Z     '  --secondary-border: hsl(var(--secondary));\n' +
+2025-11-29T17:20:36.878250931Z     '  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878252651Z     '  --muted-border: hsl(var(--muted));\n' +
+2025-11-29T17:20:36.878254331Z     '  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878256041Z     '  --accent-border: hsl(var(--accent));\n' +
+2025-11-29T17:20:36.878257791Z     '  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878259531Z     '  --destructive-border: hsl(var(--destructive));\n' +
+2025-11-29T17:20:36.878261231Z     '  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878262941Z     '}\n' +
+2025-11-29T17:20:36.878264611Z     '\n' +
+2025-11-29T17:20:36.878266241Z     '/* DARK MODE - Futuristic Premium Theme */\n' +
+2025-11-29T17:20:36.878268331Z     '.dark {\n' +
+2025-11-29T17:20:36.878270031Z     '  --button-outline: rgba(255,255,255, .10);\n' +
+2025-11-29T17:20:36.878274592Z     '  --badge-outline: rgba(255,255,255, .05);\n' +
+2025-11-29T17:20:36.878276321Z     '  --opaque-button-border-intensity: 9;\n' +
+2025-11-29T17:20:36.878278061Z     '  --elevate-1: rgba(255,255,255, .04);\n' +
+2025-11-29T17:20:36.878279712Z     '  --elevate-2: rgba(255,255,255, .09);\n' +
+2025-11-29T17:20:36.878281381Z     '  --background: 225 25% 6%;\n' +
+2025-11-29T17:20:36.878283032Z     '  --foreground: 220 20% 95%;\n' +
+2025-11-29T17:20:36.878284762Z     '  --border: 225 20% 15%;\n' +
+2025-11-29T17:20:36.878286462Z     '  --card: 225 25% 8%;\n' +
+2025-11-29T17:20:36.878288112Z     '  --card-foreground: 220 20% 93%;\n' +
+2025-11-29T17:20:36.878289792Z     '  --card-border: 225 20% 12%;\n' +
+2025-11-29T17:20:36.878291442Z     '  --sidebar: 225 25% 7%;\n' +
+2025-11-29T17:20:36.878293092Z     '  --sidebar-foreground: 220 20% 90%;\n' +
+2025-11-29T17:20:36.878294822Z     '  --sidebar-border: 225 20% 13%;\n' +
+2025-11-29T17:20:36.878296522Z     '  --sidebar-primary: 265 85% 60%;\n' +
+2025-11-29T17:20:36.878298192Z     '  --sidebar-primary-foreground: 0 0% 100%;\n' +
+2025-11-29T17:20:36.878299872Z     '  --sidebar-accent: 225 20% 14%;\n' +
+2025-11-29T17:20:36.878301532Z     '  --sidebar-accent-foreground: 220 20% 88%;\n' +
+2025-11-29T17:20:36.878303202Z     '  --sidebar-ring: 265 85% 60%;\n' +
+2025-11-29T17:20:36.878304842Z     '  --popover: 225 25% 10%;\n' +
+2025-11-29T17:20:36.878306502Z     '  --popover-foreground: 220 20% 88%;\n' +
+2025-11-29T17:20:36.878308152Z     '  --popover-border: 225 20% 16%;\n' +
+2025-11-29T17:20:36.878309802Z     '  --primary: 265 85% 60%;\n' +
+2025-11-29T17:20:36.878311472Z     '  --primary-foreground: 0 0% 100%;\n' +
+2025-11-29T17:20:36.878313162Z     '  --secondary: 225 20% 14%;\n' +
+2025-11-29T17:20:36.878314792Z     '  --secondary-foreground: 220 20% 86%;\n' +
+2025-11-29T17:20:36.878316422Z     '  --muted: 225 20% 12%;\n' +
+2025-11-29T17:20:36.878318072Z     '  --muted-foreground: 220 15% 55%;\n' +
+2025-11-29T17:20:36.878319722Z     '  --accent: 185 75% 50%;\n' +
+2025-11-29T17:20:36.878321372Z     '  --accent-foreground: 225 25% 8%;\n' +
+2025-11-29T17:20:36.878323042Z     '  --destructive: 0 72% 55%;\n' +
+2025-11-29T17:20:36.878324702Z     '  --destructive-foreground: 0 0% 100%;\n' +
+2025-11-29T17:20:36.878326382Z     '  --input: 220 15% 70%;\n' +
+2025-11-29T17:20:36.878328142Z     '  --ring: 265 85% 60%;\n' +
+2025-11-29T17:20:36.878329822Z     '  --chart-1: 265 85% 65%;\n' +
+2025-11-29T17:20:36.878331462Z     '  --chart-2: 185 75% 55%;\n' +
+2025-11-29T17:20:36.878333122Z     '  --chart-3: 330 85% 65%;\n' +
+2025-11-29T17:20:36.878334773Z     '  --chart-4: 45 95% 60%;\n' +
+2025-11-29T17:20:36.878336413Z     '  --chart-5: 150 75% 50%;\n' +
+2025-11-29T17:20:36.878338073Z     '  --neon-cyan: 185 100% 55%;\n' +
+2025-11-29T17:20:36.878339753Z     '  --neon-purple: 265 100% 70%;\n' +
+2025-11-29T17:20:36.878341413Z     '  --neon-pink: 330 100% 70%;\n' +
+2025-11-29T17:20:36.878343082Z     '  --neon-green: 150 100% 50%;\n' +
+2025-11-29T17:20:36.878344742Z     '  --shadow-2xs: 0px 2px 0px 0px hsl(220 20% 90% / 0.00);\n' +
+2025-11-29T17:20:36.878346493Z     '  --shadow-xs: 0px 2px 0px 0px hsl(220 20% 90% / 0.00);\n' +
+2025-11-29T17:20:36.878348203Z     '  --shadow-sm: 0px 2px 4px 0px hsl(220 20% 0% / 0.20), 0px 1px 2px -1px hsl(220 20% 0% / 0.10);\n' +
+2025-11-29T17:20:36.878349913Z     '  --shadow: 0px 4px 8px 0px hsl(220 20% 0% / 0.25), 0px 2px 4px -1px hsl(220 20% 0% / 0.12);\n' +
+2025-11-29T17:20:36.878351593Z     '  --shadow-md: 0px 6px 16px 0px hsl(220 20% 0% / 0.30), 0px 3px 6px -1px hsl(220 20% 0% / 0.15);\n' +
+2025-11-29T17:20:36.878356093Z     '  --shadow-lg: 0px 12px 24px 0px hsl(220 20% 0% / 0.35), 0px 6px 12px -1px hsl(220 20% 0% / 0.18);\n' +
+2025-11-29T17:20:36.878357883Z     '  --shadow-xl: 0px 20px 40px 0px hsl(220 20% 0% / 0.40), 0px 10px 20px -1px hsl(220 20% 0% / 0.20);\n' +
+2025-11-29T17:20:36.878359543Z     '  --shadow-2xl: 0px 32px 64px 0px hsl(220 20% 0% / 0.45);\n' +
+2025-11-29T17:20:36.878361193Z     '\n' +
+2025-11-29T17:20:36.878362893Z     '  --sidebar-primary-border: hsl(var(--sidebar-primary));\n' +
+2025-11-29T17:20:36.878369113Z     '  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878370953Z     '  --sidebar-accent-border: hsl(var(--sidebar-accent));\n' +
+2025-11-29T17:20:36.878372753Z     '  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878374453Z     '  --primary-border: hsl(var(--primary));\n' +
+2025-11-29T17:20:36.878376103Z     '  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878377753Z     '  --secondary-border: hsl(var(--secondary));\n' +
+2025-11-29T17:20:36.878379403Z     '  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878381083Z     '  --muted-border: hsl(var(--muted));\n' +
+2025-11-29T17:20:36.878382753Z     '  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878384433Z     '  --accent-border: hsl(var(--accent));\n' +
+2025-11-29T17:20:36.878386153Z     '  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878387803Z     '  --destructive-border: hsl(var(--destructive));\n' +
+2025-11-29T17:20:36.878389453Z     '  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);\n' +
+2025-11-29T17:20:36.878391133Z     '}\n' +
+2025-11-29T17:20:36.878392793Z     '\n' +
+2025-11-29T17:20:36.878394453Z     '@layer base {\n' +
+2025-11-29T17:20:36.878396114Z     '  * {\n' +
+2025-11-29T17:20:36.878397794Z     '    @apply border-border;\n' +
+2025-11-29T17:20:36.878399483Z     '  }\n' +
+2025-11-29T17:20:36.878401194Z     '\n' +
+2025-11-29T17:20:36.878402854Z     '  body {\n' +
+2025-11-29T17:20:36.878404514Z     '    @apply font-sans antialiased bg-background text-foreground;\n' +
+2025-11-29T17:20:36.878406154Z     '  }\n' +
+2025-11-29T17:20:36.878407804Z     '\n' +
+2025-11-29T17:20:36.878409454Z     '  ::selection {\n' +
+2025-11-29T17:20:36.878411104Z     '    @apply bg-primary/20 text-foreground;\n' +
+2025-11-29T17:20:36.878412794Z     '  }\n' +
+2025-11-29T17:20:36.878414434Z     '}\n' +
+2025-11-29T17:20:36.878416084Z     '\n' +
+2025-11-29T17:20:36.878417744Z     '@layer utilities {\n' +
+2025-11-29T17:20:36.878419434Z     '  input[type="search"]::-webkit-search-cancel-button {\n' +
+2025-11-29T17:20:36.878421104Z     '    @apply hidden;\n' +
+2025-11-29T17:20:36.878422754Z     '  }\n' +
+2025-11-29T17:20:36.878424404Z     '\n' +
+2025-11-29T17:20:36.878426164Z     '  [contenteditable][data-placeholder]:empty::before {\n' +
+2025-11-29T17:20:36.878428064Z     '    content: attr(data-placeholder);\n' +
+2025-11-29T17:20:36.878429744Z     '    color: hsl(var(--muted-foreground));\n' +
+2025-11-29T17:20:36.878431414Z     '    pointer-events: none;\n' +
+2025-11-29T17:20:36.878433094Z     '  }\n' +
+2025-11-29T17:20:36.878434754Z     '\n' +
+2025-11-29T17:20:36.878439014Z     '  .no-default-hover-elevate {}\n' +
+2025-11-29T17:20:36.878442614Z     '  .no-default-active-elevate {}\n' +
+2025-11-29T17:20:36.878444354Z     '\n' +
+2025-11-29T17:20:36.878446094Z     '  .toggle-elevate::before,\n' +
+2025-11-29T17:20:36.878447744Z     '  .toggle-elevate-2::before {\n' +
+2025-11-29T17:20:36.878449434Z     '    content: "";\n' +
+2025-11-29T17:20:36.878451184Z     '    pointer-events: none;\n' +
+2025-11-29T17:20:36.878452844Z     '    position: absolute;\n' +
+2025-11-29T17:20:36.878454524Z     '    inset: 0px;\n' +
+2025-11-29T17:20:36.878456184Z     '    border-radius: inherit;\n' +
+2025-11-29T17:20:36.878457875Z     '    z-index: -1;\n' +
+2025-11-29T17:20:36.878459524Z     '  }\n' +
+2025-11-29T17:20:36.878461164Z     '\n' +
+2025-11-29T17:20:36.878462824Z     '  .toggle-elevate.toggle-elevated::before {\n' +
+2025-11-29T17:20:36.878464524Z     '    background-color: var(--elevate-2);\n' +
+2025-11-29T17:20:36.878466175Z     '  }\n' +
+2025-11-29T17:20:36.878467824Z     '\n' +
+2025-11-29T17:20:36.878469475Z     '  .border.toggle-elevate::before {\n' +
+2025-11-29T17:20:36.878471145Z     '    inset: -1px;\n' +
+2025-11-29T17:20:36.878472815Z     '  }\n' +
+2025-11-29T17:20:36.878474465Z     '\n' +
+2025-11-29T17:20:36.878476105Z     '  .hover-elevate:not(.no-default-hover-elevate),\n' +
+2025-11-29T17:20:36.878477805Z     '  .active-elevate:not(.no-default-active-elevate),\n' +
+2025-11-29T17:20:36.878479465Z     '  .hover-elevate-2:not(.no-default-hover-elevate),\n' +
+2025-11-29T17:20:36.878481185Z     '  .active-elevate-2:not(.no-default-active-elevate) {\n' +
+2025-11-29T17:20:36.878482935Z     '    position: relative;\n' +
+2025-11-29T17:20:36.878484655Z     '    z-index: 0;\n' +
+2025-11-29T17:20:36.878486335Z     '  }\n' +
+2025-11-29T17:20:36.878487965Z     '\n' +
+2025-11-29T17:20:36.878489685Z     '  .hover-elevate:not(.no-default-hover-elevate)::after,\n' +
+2025-11-29T17:20:36.878491445Z     '  .active-elevate:not(.no-default-active-elevate)::after,\n' +
+2025-11-29T17:20:36.878493125Z     '  .hover-elevate-2:not(.no-default-hover-elevate)::after,\n' +
+2025-11-29T17:20:36.878494785Z     '  .active-elevate-2:not(.no-default-active-elevate)::after {\n' +
+2025-11-29T17:20:36.878496455Z     '    content: "";\n' +
+2025-11-29T17:20:36.878498155Z     '    pointer-events: none;\n' +
+2025-11-29T17:20:36.878499805Z     '    position: absolute;\n' +
+2025-11-29T17:20:36.878501455Z     '    inset: 0px;\n' +
+2025-11-29T17:20:36.878503105Z     '    border-radius: inherit;\n' +
+2025-11-29T17:20:36.878504765Z     '    z-index: 999;\n' +
+2025-11-29T17:20:36.878506415Z     '  }\n' +
+2025-11-29T17:20:36.878508055Z     '\n' +
+2025-11-29T17:20:36.878509705Z     '  .hover-elevate:hover:not(.no-default-hover-elevate)::after,\n' +
+2025-11-29T17:20:36.878511425Z     '  .active-elevate:active:not(.no-default-active-elevate)::after {\n' +
+2025-11-29T17:20:36.878513095Z     '    background-color: var(--elevate-1);\n' +
+2025-11-29T17:20:36.878514755Z     '  }\n' +
+2025-11-29T17:20:36.878516385Z     '\n' +
+2025-11-29T17:20:36.878518025Z     '  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,\n' +
+2025-11-29T17:20:36.878519696Z     '  .active-elevate-2:active:not(.no-default-active-elevate)::after {\n' +
+2025-11-29T17:20:36.878521376Z     '    background-color: var(--elevate-2);\n' +
+2025-11-29T17:20:36.878523065Z     '  }\n' +
+2025-11-29T17:20:36.878524765Z     '\n' +
+2025-11-29T17:20:36.878526436Z     '  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,\n' +
+2025-11-29T17:20:36.878528096Z     '  .border.active-elevate:not(.no-active-interaction-elevate)::after,\n' +
+2025-11-29T17:20:36.878532266Z     '  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,\n' +
+2025-11-29T17:20:36.878541666Z     '  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,\n' +
+2025-11-29T17:20:36.878555086Z     '  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {\n' +
+2025-11-29T17:20:36.878558186Z     '    inset: -1px;\n' +
+2025-11-29T17:20:36.878559916Z     '  }\n' +
+2025-11-29T17:20:36.878561596Z     '\n' +
+2025-11-29T17:20:36.878563266Z     '  /* Glassmorphism utility */\n' +
+2025-11-29T17:20:36.878564936Z     '  .glass {\n' +
+2025-11-29T17:20:36.878566626Z     '    @apply bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10;\n' +
+2025-11-29T17:20:36.878568286Z     '  }\n' +
+2025-11-29T17:20:36.878569946Z     '\n' +
+2025-11-29T17:20:36.878571616Z     '  .glass-card {\n' +
+2025-11-29T17:20:36.878573336Z     '    @apply bg-white/80 dark:bg-card/80 backdrop-blur-xl border border-white/40 dark:border-white/10;\n' +
+2025-11-29T17:20:36.878574986Z     '  }\n' +
+2025-11-29T17:20:36.878576616Z     '\n' +
+2025-11-29T17:20:36.878578336Z     '  /* Gradient text utility */\n' +
+2025-11-29T17:20:36.878580006Z     '  .gradient-text {\n' +
+2025-11-29T17:20:36.878582066Z     '    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-neon-pink;\n' +
+2025-11-29T17:20:36.878583766Z     '    background-size: 200% auto;\n' +
+2025-11-29T17:20:36.878585506Z     '  }\n' +
+2025-11-29T17:20:36.878587146Z     '\n' +
+2025-11-29T17:20:36.878588926Z     '  /* Neon glow effects */\n' +
+2025-11-29T17:20:36.878590637Z     '  .neon-glow {\n' +
+2025-11-29T17:20:36.878592507Z     '    box-shadow: 0 0 20px hsl(var(--primary) / 0.3), 0 0 40px hsl(var(--primary) / 0.15);\n' +
+2025-11-29T17:20:36.878594197Z     '  }\n' +
+2025-11-29T17:20:36.878595857Z     '\n' +
+2025-11-29T17:20:36.878597527Z     '  .neon-glow-accent {\n' +
+2025-11-29T17:20:36.878599317Z     '    box-shadow: 0 0 20px hsl(var(--accent) / 0.3), 0 0 40px hsl(var(--accent) / 0.15);\n' +
+2025-11-29T17:20:36.878600987Z     '  }\n' +
+2025-11-29T17:20:36.878602637Z     '\n' +
+2025-11-29T17:20:36.878604287Z     '  /* Smooth scroll */\n' +
+2025-11-29T17:20:36.878605947Z     '  .scroll-smooth {\n' +
+2025-11-29T17:20:36.878607627Z     '    scroll-behavior: smooth;\n' +
+2025-11-29T17:20:36.878609297Z     '  }\n' +
+2025-11-29T17:20:36.878610927Z     '\n' +
+2025-11-29T17:20:36.878612617Z     '  /* Hide scrollbar but keep functionality */\n' +
+2025-11-29T17:20:36.878614277Z     '  .scrollbar-hide {\n' +
+2025-11-29T17:20:36.878616007Z     '    -ms-overflow-style: none;\n' +
+2025-11-29T17:20:36.878617737Z     '    scrollbar-width: none;\n' +
+2025-11-29T17:20:36.878619377Z     '  }\n' +
+2025-11-29T17:20:36.878621017Z     '\n' +
+2025-11-29T17:20:36.878622657Z     '  .scrollbar-hide::-webkit-scrollbar {\n' +
+2025-11-29T17:20:36.878624317Z     '    display: none;\n' +
+2025-11-29T17:20:36.878625997Z     '  }\n' +
+2025-11-29T17:20:36.878627647Z     '\n' +
+2025-11-29T17:20:36.878629357Z     '  /* Grid pattern background */\n' +
+2025-11-29T17:20:36.878631037Z     '  .bg-grid-pattern {\n' +
+2025-11-29T17:20:36.878632707Z     '    background-image: \n' +
+2025-11-29T17:20:36.878634457Z     '      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),\n' +
+2025-11-29T17:20:36.878636147Z     '      linear-gradient(to bo'... 3275 more characters,
+2025-11-29T17:20:36.878637807Z   plugin: 'vite:css',
+2025-11-29T17:20:36.878639517Z   hook: 'transform',
+2025-11-29T17:20:36.878644087Z   id: '/opt/render/project/src/client/src/index.css',
+2025-11-29T17:20:36.878645787Z   watchFiles: [
+2025-11-29T17:20:36.878647447Z     '/opt/render/project/src/client/index.html',
+2025-11-29T17:20:36.878649107Z     '/opt/render/project/src/client/src/main.tsx',
+2025-11-29T17:20:36.878650767Z     '/opt/render/project/src/package.json',
+2025-11-29T17:20:36.878652518Z     '/opt/render/project/src/node_modules/react/jsx-runtime.js',
+2025-11-29T17:20:36.878654148Z     '/opt/render/project/src/client/src/App.tsx',
+2025-11-29T17:20:36.878655838Z     '/opt/render/project/src/node_modules/react-dom/client.js',
+2025-11-29T17:20:36.878657518Z     '/opt/render/project/src/client/src/index.css'
+2025-11-29T17:20:36.878659228Z   ]
+2025-11-29T17:20:36.878660998Z }
+2025-11-29T17:20:36.972656791Z ==> Build failed 😞
+2025-11-29T17:20:36.972678701Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
