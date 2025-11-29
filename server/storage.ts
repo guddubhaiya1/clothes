@@ -370,17 +370,50 @@ export class MemStorage implements IStorage {
     customerInfo: OrderInfo;
     subtotal: number;
     shipping: number;
+    tax: number;
     total: number;
   }): Promise<Order> {
+    const orderId = `CD-${Date.now().toString(36).toUpperCase()}`;
+    const createdAt = new Date().toISOString();
+    
+    try {
+      // Save to Neon database
+      const productIds = orderData.items.map(item => item.productId);
+      
+      await db.insert(ordersTable).values({
+        id: orderId,
+        email: orderData.customerInfo.email,
+        firstName: orderData.customerInfo.firstName,
+        lastName: orderData.customerInfo.lastName,
+        address: orderData.customerInfo.address,
+        city: orderData.customerInfo.city,
+        state: orderData.customerInfo.state,
+        zipCode: orderData.customerInfo.zipCode,
+        country: orderData.customerInfo.country,
+        phone: orderData.customerInfo.phone,
+        productIds,
+        items: orderData.items,
+        subtotal: orderData.subtotal.toString(),
+        shipping: orderData.shipping.toString(),
+        tax: orderData.tax.toString(),
+        total: orderData.total.toString(),
+        status: "confirmed",
+        createdAt,
+      });
+    } catch (error) {
+      console.error("Database error saving order:", error);
+    }
+
+    // Always return order (in case DB fails, it's still saved in memory)
     const order: Order = {
-      id: `CD-${Date.now().toString(36).toUpperCase()}`,
+      id: orderId,
       items: orderData.items,
       customerInfo: orderData.customerInfo,
       subtotal: orderData.subtotal,
       shipping: orderData.shipping,
       total: orderData.total,
       status: "confirmed",
-      createdAt: new Date().toISOString(),
+      createdAt,
     };
 
     this.orders.set(order.id, order);

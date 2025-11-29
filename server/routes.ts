@@ -184,7 +184,7 @@ export async function registerRoutes(
   // Create order (checkout)
   app.post("/api/orders", async (req, res) => {
     try {
-      const { items, customerInfo, subtotal, shipping, total } = req.body;
+      const { items, customerInfo, subtotal, shipping, tax, total } = req.body;
       
       // Validate customer info
       const customerResult = orderInfoSchema.safeParse(customerInfo);
@@ -201,7 +201,7 @@ export async function registerRoutes(
       }
 
       // Validate totals
-      if (typeof subtotal !== "number" || typeof shipping !== "number" || typeof total !== "number") {
+      if (typeof subtotal !== "number" || typeof shipping !== "number" || typeof tax !== "number" || typeof total !== "number") {
         return res.status(400).json({ error: "Invalid order totals" });
       }
 
@@ -210,6 +210,7 @@ export async function registerRoutes(
         customerInfo: customerResult.data,
         subtotal,
         shipping,
+        tax,
         total,
       });
 
