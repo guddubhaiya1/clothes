@@ -205,6 +205,7 @@ export async function registerRoutes(
         return res.status(400).json({ error: "Invalid order totals" });
       }
 
+      const userId = req.isAuthenticated() ? (req.user as any)?.id : undefined;
       const order = await storage.createOrder({
         items,
         customerInfo: customerResult.data,
@@ -212,6 +213,7 @@ export async function registerRoutes(
         shipping,
         tax,
         total,
+        userId,
       });
 
       res.status(201).json(order);
@@ -295,7 +297,8 @@ export async function registerRoutes(
         return res.status(400).json({ error: "Invalid email", details: result.error.issues });
       }
 
-      const subscriber = await storage.subscribe(result.data.email);
+      const userId = req.isAuthenticated() ? (req.user as any)?.id : undefined;
+      const subscriber = await storage.subscribe(result.data.email, userId);
       res.status(201).json(subscriber);
     } catch (error: any) {
       if (error.message === "Email already subscribed") {
@@ -340,6 +343,7 @@ export async function registerRoutes(
         });
       }
 
+      const userId = req.isAuthenticated() ? (req.user as any)?.id : undefined;
       const bulkOrder = await storage.createBulkOrder({
         organizationName,
         contactPerson,
@@ -348,6 +352,7 @@ export async function registerRoutes(
         estimatedQuantity,
         productInterests,
         message,
+        userId,
       });
 
       res.status(201).json(bulkOrder);
@@ -366,6 +371,20 @@ export async function registerRoutes(
       res.json(bulkOrders);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch bulk orders" });
+    }
+  });
+
+  // Get user's orders
+  app.get("/api/user/orders", async (req, res) => {
+    try {
+      if (!req.isAuthenticated() || !req.user) {
+        return res.status(401).json({ error: "Not authenticated" });
+      }
+      const userId = (req.user as any).id;
+      const orders = await storage.getUserOrders(userId);
+      res.json(orders);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch user orders" });
     }
   });
 

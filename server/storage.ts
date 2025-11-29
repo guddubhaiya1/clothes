@@ -9,7 +9,7 @@ import type {
   InsertSubscriber
 } from "@shared/schema";
 import { db } from "./db";
-import { subscribersTable, ordersTable, bulkOrdersTable } from "@shared/schema";
+import { subscribersTable, ordersTable, bulkOrdersTable, usersTable } from "@shared/schema";
 import { eq } from "drizzle-orm";
 
 const products: Product[] = [
@@ -372,6 +372,7 @@ export class MemStorage implements IStorage {
     shipping: number;
     tax: number;
     total: number;
+    userId?: string;
   }): Promise<Order> {
     const orderId = `CD-${Date.now().toString(36).toUpperCase()}`;
     const createdAt = new Date().toISOString();
@@ -382,6 +383,7 @@ export class MemStorage implements IStorage {
       
       await db.insert(ordersTable).values({
         id: orderId,
+        userId: orderData.userId || null,
         email: orderData.customerInfo.email,
         firstName: orderData.customerInfo.firstName,
         lastName: orderData.customerInfo.lastName,
@@ -420,6 +422,19 @@ export class MemStorage implements IStorage {
     return order;
   }
 
+  async getUserOrders(userId: string): Promise<any[]> {
+    try {
+      const userOrders = await db
+        .select()
+        .from(ordersTable)
+        .where(eq(ordersTable.userId, userId));
+      return userOrders;
+    } catch (error) {
+      console.error("Database error:", error);
+      return [];
+    }
+  }
+
   async getOrder(orderId: string): Promise<Order | undefined> {
     return this.orders.get(orderId);
   }
@@ -433,7 +448,7 @@ export class MemStorage implements IStorage {
     return items;
   }
 
-  async subscribe(email: string): Promise<{ id: string; email: string; createdAt: string }> {
+  async subscribe(email: string, userId?: string): Promise<{ id: string; email: string; createdAt: string }> {
     try {
       // Check if email already exists
       const existing = await db
@@ -447,6 +462,7 @@ export class MemStorage implements IStorage {
 
       const subscriber = {
         id: randomUUID(),
+        userId: userId || null,
         email,
         createdAt: new Date().toISOString(),
       };
@@ -489,6 +505,7 @@ export class MemStorage implements IStorage {
     estimatedQuantity: string;
     productInterests: string;
     message?: string;
+    userId?: string;
   }): Promise<{ id: string; email: string; organizationName: string; createdAt: string }> {
     const bulkOrderId = `BO-${Date.now().toString(36).toUpperCase()}`;
     const createdAt = new Date().toISOString();
@@ -496,6 +513,7 @@ export class MemStorage implements IStorage {
     try {
       await db.insert(bulkOrdersTable).values({
         id: bulkOrderId,
+        userId: bulkOrderData.userId || null,
         organizationName: bulkOrderData.organizationName,
         contactPerson: bulkOrderData.contactPerson,
         email: bulkOrderData.email,

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { pgTable, text, varchar, numeric, boolean, json } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, numeric, boolean, json, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 
 export const categories = ["developer", "medical", "engineering", "designer"] as const;
@@ -129,6 +129,16 @@ export const uploadProductSchema = z.object({
 
 export type UploadProductInput = z.infer<typeof uploadProductSchema>;
 
+// Users Table - for OAuth profiles
+export const usersTable = pgTable("users", {
+  id: varchar("id").primaryKey(),
+  googleId: varchar("google_id").notNull().unique(),
+  email: varchar("email").notNull().unique(),
+  displayName: varchar("display_name").notNull(),
+  avatar: text("avatar"),
+  createdAt: varchar("created_at").notNull(),
+});
+
 // User interface for OAuth
 export interface User {
   id: string;
@@ -150,6 +160,7 @@ export const userCartsTable = pgTable("user_carts", {
 // Subscribers Table
 export const subscribersTable = pgTable("subscribers", {
   id: varchar("id").primaryKey(),
+  userId: varchar("user_id"),
   email: varchar("email").notNull().unique(),
   createdAt: varchar("created_at").notNull(),
 });
@@ -160,6 +171,7 @@ export type InsertSubscriber = z.infer<typeof subscriberInsertSchema>;
 // Orders Table - stores shipping information and product orders
 export const ordersTable = pgTable("orders", {
   id: varchar("id").primaryKey(),
+  userId: varchar("user_id"),
   email: varchar("email").notNull(),
   firstName: varchar("first_name").notNull(),
   lastName: varchar("last_name").notNull(),
@@ -185,6 +197,7 @@ export type InsertOrder = z.infer<typeof orderInsertSchema>;
 // Bulk Orders Table - for B2B/organization inquiries
 export const bulkOrdersTable = pgTable("bulk_orders", {
   id: varchar("id").primaryKey(),
+  userId: varchar("user_id"),
   organizationName: varchar("organization_name").notNull(),
   contactPerson: varchar("contact_person").notNull(),
   email: varchar("email").notNull(),
