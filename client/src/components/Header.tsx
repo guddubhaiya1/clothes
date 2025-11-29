@@ -18,7 +18,6 @@ const navLinks = [
   { href: "/shop?category=developer", label: "Developer" },
   { href: "/shop?category=medical", label: "Medical" },
   { href: "/shop?category=engineering", label: "Engineering" },
-  { href: "/bulk-order", label: "Bulk Orders", icon: true },
 ];
 
 export function Header() {
@@ -149,6 +148,20 @@ export function Header() {
 
             {/* Right Section */}
             <div className="flex items-center gap-2">
+              {/* Bulk Orders Button */}
+              <Link href="/bulk-order">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    variant="default"
+                    className="hidden md:flex gap-2"
+                    data-testid="button-bulk-orders"
+                  >
+                    <Briefcase className="h-4 w-4" />
+                    Bulk Orders
+                  </Button>
+                </motion.div>
+              </Link>
+
               {/* Find in Page - Desktop */}
               <div className="hidden md:flex items-center gap-2">
                 {isSearchOpen ? (
